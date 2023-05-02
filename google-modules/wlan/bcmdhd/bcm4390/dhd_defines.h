@@ -1114,7 +1114,6 @@
 	#if IS_ENABLED(CONFIG_BCMDHD_PCIE)
 		#define PCIE_FULL_DONGLE
 		#define BCMPCIE
-		#define CUSTOM_DPC_PRIO_SETTING -1
 		/* NCI */
 		#define SOCI_NCI_BUS
 		/* tput enhancement */
