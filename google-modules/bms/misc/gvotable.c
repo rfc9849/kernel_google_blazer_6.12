@@ -815,12 +815,10 @@ int gvotable_set_default(struct gvotable_election *el, void *default_val)
 
 	gvotable_set_most_recent_vote(el, default_reason, default_val);
 
-	if (changed) {
-		if (gvotable_internal_run_election(el)) {
-			gvotable_unlock_result(el);
-			ret = gvotable_run_callback(el);
-			cb_run = true;
-		}
+	if (changed && gvotable_internal_run_election(el)) {
+		gvotable_unlock_result(el);
+		ret = gvotable_run_callback(el);
+		cb_run = true;
 	} else {
 		gvotable_unlock_result(el);
 	}
