@@ -4,7 +4,13 @@
  */
 
 #undef TRACE_SYSTEM
+#if defined(CONFIG_INTEGRATE_MODULES) && IS_ENABLED(CONFIG_ANDROID_BINDER_IPC_RUST)
+/* Keep Rust Binder's stock namespace; the C fallback has a separate one. */
+#include "binder_trace_prefix.h"
+#define TRACE_SYSTEM binder_c
+#else
 #define TRACE_SYSTEM binder
+#endif
 
 #if !defined(_BINDER_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
 #define _BINDER_TRACE_H

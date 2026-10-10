@@ -7499,6 +7499,7 @@ void remove_event_from_tracers(struct trace_event_call *call);
 
 void binder_remove_trace_events(struct module *module)
 {
+#ifndef CONFIG_INTEGRATE_MODULES
 	struct trace_event_call *call, *tmp;
 	const char *name;
 
@@ -7517,6 +7518,9 @@ void binder_remove_trace_events(struct module *module)
 	up_write(&trace_event_sem);
 	mutex_unlock(&trace_types_lock);
 	mutex_unlock(&event_mutex);
+#else
+	/* Both namespaces and their code are permanent in the integrated image. */
+#endif
 }
 EXPORT_SYMBOL_GPL(binder_remove_trace_events);
 #else
