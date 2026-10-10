@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Only changes needed to integrate the stock 4 KiB laguna kernel and drivers.
+CONFIG_KCONFIG_EXT_LGA=y
+CONFIG_LOCALVERSION="-4k"
+CONFIG_INTEGRATE_MODULES=y
+# CONFIG_MODULES is not set
+CONFIG_MODPROBE_PATH="/system/bin/modprobe"
+# CONFIG_WERROR is not set
+CONFIG_KALLSYMS_ALL=y
+CONFIG_ARM64_4K_PAGES=y
+CONFIG_ARM_SMMU_V3_PKVM_PIXEL=y
+# CONFIG_ARM_SMMU_V3_PIXEL is not set
+# CONFIG_ARM_SMMU_V3 is not set
+# CONFIG_ARM_SMMU_V3_PKVM is not set
+# CONFIG_ARM_SMMU is not set
+# CONFIG_ARCH_QCOM is not set
+# CONFIG_GUNYAH is not set
+# CONFIG_GUNYAH_QCOM_TRUSTED_VM is not set
+# CONFIG_ZRAM is not set
+# CONFIG_GOOGLE_CPM_TRACEPOINT is not set
+# CONFIG_GOOGLE_GEM_TEST is not set
+# CONFIG_GOOGLE_EBU is not set
+# CONFIG_PIXEL_IOMMU_MAP_BENCHMARK is not set
+CONFIG_CRC8=y
