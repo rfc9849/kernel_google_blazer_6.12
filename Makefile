@@ -5,6 +5,10 @@ SUBLEVEL = 81
 EXTRAVERSION =
 NAME = Baby Opossum Posse
 
+export KCONFIG_SOC_GS_PREFIX := google-modules/soc/gs/
+export KCONFIG_SOC_RDO_PREFIX := google-modules/soc/rdo/
+export KCONFIG_EXT_MODULES_PREFIX := ./
+
 ifeq ($(MAKECMDGOALS),)
 MAKECMDGOALS := Image.lz4 dtbs
 endif
