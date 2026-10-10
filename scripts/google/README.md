@@ -64,7 +64,10 @@ LIBCLANG_PATH=/path/to/clang/lib \
 scripts/google/build.sh
 ```
 
-`OUT` and `JOBS` are optional. The result is `out/arch/arm64/boot/Image.lz4`.
+`OUT` and `JOBS` are optional. `PAHOLE` can select the BTF encoder; use >= 1.26
+(the bring-up host uses 1.27). Version 1.25 has a fixed 4096 per-CPU variable
+limit and cannot encode this integrated image reliably. BTF remains enabled.
+The result is `out/arch/arm64/boot/Image.lz4`.
 Only this repository's source is compiled. Neither Bazel nor a `repo` workspace
 is required. The macOS checkout is for inspection only: a case-insensitive APFS
 volume cannot represent several Linux filename pairs faithfully (for example

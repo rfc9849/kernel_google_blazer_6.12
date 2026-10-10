@@ -16,7 +16,17 @@ for tool in clang ld.lld rustc; do
   command -v "$tool" >/dev/null || { echo "Missing tool: $tool" >&2; exit 1; }
 done
 [ -x "$BINDGEN" ] || { echo "Set BINDGEN to the bindgen executable" >&2; exit 1; }
-MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" -j"$JOBS")
+PAHOLE=${PAHOLE:-$HOME/toolchains/pahole-1.27/bin/pahole}
+if [ ! -x "$PAHOLE" ]; then
+  PAHOLE=$(command -v pahole || true)
+fi
+[ -n "$PAHOLE" ] || { echo 'Install pahole >= 1.26 or set PAHOLE' >&2; exit 1; }
+PAHOLE_VERSION=$($PAHOLE --version | tr -d 'v.')
+if [ "$PAHOLE_VERSION" -lt 126 ]; then
+  echo 'pahole >= 1.26 is required: 1.25 has a 4096 per-CPU variable limit' >&2
+  exit 1
+fi
+MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" PAHOLE="$PAHOLE" -j"$JOBS")
 if [ "${REGENERATE_CONFIG:-0}" = 1 ]; then
   mkdir -p "$OUT"
   scripts/kconfig/merge_config.sh -m -O "$OUT" \
