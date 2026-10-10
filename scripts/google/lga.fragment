@@ -23,6 +23,11 @@ CONFIG_ARM_SMMU_V3_PKVM_PIXEL=y
 # CONFIG_PIXEL_IOMMU_MAP_BENCHMARK is not set
 CONFIG_CRC8=y
 
+# Netfilter TTL/HL mangling, as in our 6.6 tree.
+CONFIG_IP_NF_TARGET_TTL=y
+CONFIG_IP6_NF_MATCH_HL=y
+CONFIG_IP6_NF_TARGET_HL=y
+
 # Match the pinned SukiSU-Ultra integration in our 6.6 tree.
 CONFIG_KPROBES=y
 CONFIG_KSU=y
