@@ -156,9 +156,9 @@ class Target:
 
 # Google 8250's core/platform copy must not bind to the generic 8250 globals.
 SERIAL_PRIVATE_GLOBALS = (
-    "early_serial_setup", "nr_uarts", "serial8250_isa_config", "serial8250_isa_devs",
+    "early_serial_setup", "serial8250_isa_config", "serial8250_isa_devs",
     "serial8250_isa_init_ports", "serial8250_reg", "serial8250_register_ports",
-    "share_irqs", "skip_txen_test", "univ8250_port_base_ops", "univ8250_port_ops",
+    "univ8250_port_base_ops", "univ8250_port_ops",
 )
 for target in ("google_8250", "google_8250_base", "google_8250_dw"):
     EXTRA_FLAGS["google-modules/soc/rdo/drivers/tty/serial/8250:" + target] = [

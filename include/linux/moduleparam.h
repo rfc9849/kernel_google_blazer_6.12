@@ -282,6 +282,20 @@ struct kparam_array
 #define __moduleparam_const const
 #endif
 
+/*
+ * Integrated modules retain their module parameter callbacks. Unlike ordinary
+ * built-ins, these callbacks may allocate memory (for example GCMA skip_heaps)
+ * and cannot run in start_kernel(), before mm_core_init(). Parse their default
+ * command-line parameters at the first initcall level instead, after the slab
+ * allocator is available and before any integrated module can be loaded.
+ * Explicit initcall levels and genuine built-in parameters remain unchanged.
+ */
+#if defined(MODULE) && defined(CONFIG_INTEGRATE_MODULES)
+#define __module_param_level(level) ((level) == -1 ? 0 : (level))
+#else
+#define __module_param_level(level) (level)
+#endif
+
 /* This is the fundamental function for registering boot/module parameters. */
 #define __module_param_call(prefix, name, ops, arg, perm, level, flags)	\
 	static_assert(sizeof(""prefix) - 1 <= MAX_PARAM_PREFIX_LEN);	\
@@ -290,7 +304,7 @@ struct kparam_array
 	__used __section("__param")					\
 	__aligned(__alignof__(struct kernel_param))			\
 	= { __param_str_##name, THIS_MODULE, ops,			\
-	    VERIFY_OCTAL_PERMISSIONS(perm), level, flags, { arg } }
+	    VERIFY_OCTAL_PERMISSIONS(perm), __module_param_level(level), flags, { arg } }
 
 /*
  * Useful for describing a set/get pair used only once (i.e. for this

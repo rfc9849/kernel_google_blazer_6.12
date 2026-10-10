@@ -34,7 +34,11 @@ into the nVHE hypervisor. Rust Binder has the same delayed-initialization
 support as integrated C modules. Both Binder implementations and `binder.impl`
 are retained. Rust uses the stock `binder` tracefs namespace; the C fallback's
 tracepoints are namespaced as `binder_c` to avoid collisions in a single image.
-Android vendor hooks are not disabled.
+Android vendor hooks are not disabled. Default command-line parameters of
+integrated C modules are parsed at the first initcall level, not in
+`start_kernel()` before the slab allocator exists. This preserves allocating
+callbacks such as `samsung_dma_heap.gcma_skip_heaps`; genuine built-in parameters
+and explicit parameter levels keep their original timing.
 
 This removes binary KMI coupling for integrated drivers, **not** the need to
 match the vendor userspace, firmware, device trees, module names and module
@@ -80,6 +84,8 @@ python3 scripts/google/ddk2kbuild.py
 python3 scripts/google/test_ddk2kbuild.py
 REGENERATE_CONFIG=1 scripts/google/build.sh
 python3 scripts/google/check_image.py
+# Optional Linux/QEMU regression; no Pixel devices or rootfs are emulated:
+bash scripts/google/test_early_boot.sh
 scripts/google/package.sh
 ```
 
@@ -124,3 +130,35 @@ partitions merely because they exist in the source tree.
 After a test boot, verify pKVM/SMMU initialization, early module loading, Binder,
 display/touch, storage, WLAN, modem, audio, cameras, TPU/GXP, and thermal HAL.
 A successful compile is not evidence that the device has booted successfully.
+
+### Verified bring-up: CP41.260831.016
+
+On 2026-10-10 UTC (2026-10-11 local), Pixel 10 Pro completed Android boot via
+`fastboot boot` with `6.12.81-4k-gad6707edd425-dirty`, build #5. The device
+reported `sys.boot_completed=1`; it did not fall back to the stock kernel.
+No partitions were flashed. An ordinary reboot returns to the installed stock
+boot image.
+
+Two integration defects were fixed:
+
+- GCMA's allocating parameter callback ran before slab initialization. The
+  pre-fix Image reproduces the panic in QEMU with the stock `gcma_skip_heaps`
+  argument; the fixed Image reaches root mounting. See `test_early_boot.sh`.
+- Preprocessor renaming changed the public `google_8250.nr_uarts` parameter.
+  Parameter-backed UART globals now use assembler symbol names instead, keeping
+  the stock parameter keys. The final device log registers `ttyS2` successfully.
+
+The final bugreport confirms protected hVHE/pKVM, SMMU and Rust Binder startup
+without panic/Oops/BUG. Display/GPU, touchscreen registration, thermal HAL and
+camera enumeration were checked. This is a boot/smoke-test milestone, not a
+claim of full camera, audio, cellular, Wi-Fi or suspend validation. The
+`device_link_del` warnings, GEM probe error and UART DMA fallback also occur in
+the captured stock-beta log; the stock log additionally has a scheduler deadline
+warning. They are not being hidden or patched as part of these integration fixes.
+
+Tested compressed kernel SHA-256:
+`7b5212c37b752af429b19e067cbecbceeaee296868bafd167d46969c2f94597a`.
+The matching temporary boot image is
+`out/boot-test-CP41.260831.016/test-boot-param-uart-fix.img`; the final AnyKernel
+archive ends in `20261010-211133.zip`. The successful final bugreport ends in
+`2026-10-10-21-12-07.zip` under that boot-test directory's `bugreports/`.

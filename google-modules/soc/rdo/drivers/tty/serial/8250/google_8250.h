@@ -97,7 +97,18 @@ struct serial8250_config {
 /* Module parameters */
 #define UART_NR	CONFIG_SERIAL_8250_NR_UARTS
 
-extern unsigned int nr_uarts;
+/*
+ * Namespace the linker symbols, not the C identifiers: macro-renaming these
+ * variables also renames their module_param() keys and breaks the stock
+ * google_8250.nr_uarts command-line / modprobe interface.
+ */
+#ifdef CONFIG_INTEGRATE_MODULES
+#define GOOGLE_8250_PARAM_SYMBOL(name) __asm__("google_" #name)
+#else
+#define GOOGLE_8250_PARAM_SYMBOL(name)
+#endif
+
+extern unsigned int nr_uarts GOOGLE_8250_PARAM_SYMBOL(nr_uarts);
 
 #ifdef CONFIG_SERIAL_8250_SHARE_IRQ
 #define SERIAL8250_SHARE_IRQS 1
@@ -105,8 +116,9 @@ extern unsigned int nr_uarts;
 #define SERIAL8250_SHARE_IRQS 0
 #endif
 
-extern unsigned int share_irqs;
-extern unsigned int skip_txen_test;
+extern unsigned int share_irqs GOOGLE_8250_PARAM_SYMBOL(share_irqs);
+extern unsigned int skip_txen_test GOOGLE_8250_PARAM_SYMBOL(skip_txen_test);
+#undef GOOGLE_8250_PARAM_SYMBOL
 
 #define SERIAL8250_PORT_FLAGS(_base, _irq, _flags)		\
 	{							\
