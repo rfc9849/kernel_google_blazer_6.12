@@ -214,7 +214,7 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
 
             // SAFETY: `__this_module` is constructed by the kernel at load time and will not be
             // freed until the module is unloaded.
-            #[cfg(MODULE)]
+            #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
             static THIS_MODULE: kernel::ThisModule = unsafe {{
                 extern \"C\" {{
                     static __this_module: kernel::types::Opaque<kernel::bindings::module>;
@@ -222,7 +222,7 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
 
                 kernel::ThisModule::from_ptr(__this_module.get())
             }};
-            #[cfg(not(MODULE))]
+            #[cfg(any(not(MODULE), CONFIG_INTEGRATE_MODULES))]
             static THIS_MODULE: kernel::ThisModule = unsafe {{
                 kernel::ThisModule::from_ptr(core::ptr::null_mut())
             }};
@@ -236,7 +236,7 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
                     //
                     // This may be best done another way later on, e.g. as a new modinfo
                     // key or a new section. For the moment, keep it simple.
-                    #[cfg(MODULE)]
+                    #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
                     #[doc(hidden)]
                     #[used(compiler)]
                     static __IS_RUST_MODULE: () = ();
@@ -248,7 +248,7 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
                     ///
                     /// This function must not be called after module initialization, because it may be
                     /// freed after that completes.
-                    #[cfg(MODULE)]
+                    #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
                     #[doc(hidden)]
                     #[no_mangle]
                     #[link_section = \".init.text\"]
@@ -259,13 +259,13 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
                         unsafe {{ __init() }}
                     }}
 
-                    #[cfg(MODULE)]
+                    #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
                     #[doc(hidden)]
                     #[used(compiler)]
                     #[link_section = \".init.data\"]
                     static __UNIQUE_ID___addressable_init_module: unsafe extern \"C\" fn() -> i32 = init_module;
 
-                    #[cfg(MODULE)]
+                    #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
                     #[doc(hidden)]
                     #[no_mangle]
                     #[link_section = \".exit.text\"]
@@ -279,11 +279,39 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
                         unsafe {{ __exit() }}
                     }}
 
-                    #[cfg(MODULE)]
+                    #[cfg(all(MODULE, not(CONFIG_INTEGRATE_MODULES)))]
                     #[doc(hidden)]
                     #[used(compiler)]
                     #[link_section = \".exit.data\"]
                     static __UNIQUE_ID___addressable_cleanup_module: extern \"C\" fn() = cleanup_module;
+
+                    // Integrated modules retain their initializer until userspace
+                    // loads the corresponding .ko, just like integrated C modules.
+                    #[cfg(all(MODULE, CONFIG_INTEGRATE_MODULES))]
+                    #[no_mangle]
+                    #[used(compiler)]
+                    static __initdone__kmod_{name}__: core::sync::atomic::AtomicI32 =
+                        core::sync::atomic::AtomicI32::new(0);
+
+                    #[cfg(all(MODULE, CONFIG_INTEGRATE_MODULES))]
+                    #[cfg(CONFIG_HAVE_ARCH_PREL32_RELOCATIONS)]
+                    core::arch::global_asm!(
+                        r#\".section .rodata, \"a\"
+                            .balign 4
+                            .global __initcall__kmod_{name}__
+                        __initcall__kmod_{name}__:
+                            .long __{name}_init - .
+                            .previous
+                        \"#
+                    );
+
+                    #[cfg(all(MODULE, CONFIG_INTEGRATE_MODULES))]
+                    #[cfg(not(CONFIG_HAVE_ARCH_PREL32_RELOCATIONS))]
+                    #[no_mangle]
+                    #[used(compiler)]
+                    #[link_section = \".rodata\"]
+                    pub static __initcall__kmod_{name}__: extern \"C\" fn() ->
+                        kernel::ffi::c_int = __{name}_init;
 
                     // Built-in modules are initialized through an initcall pointer
                     // and the identifiers need to be unique.
@@ -304,7 +332,7 @@ pub(crate) fn module(ts: TokenStream) -> TokenStream {
                         \"#
                     );
 
-                    #[cfg(not(MODULE))]
+                    #[cfg(any(not(MODULE), CONFIG_INTEGRATE_MODULES))]
                     #[doc(hidden)]
                     #[no_mangle]
                     pub extern \"C\" fn __{name}_init() -> kernel::ffi::c_int {{
