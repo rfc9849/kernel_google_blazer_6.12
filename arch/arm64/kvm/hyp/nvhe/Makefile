@@ -27,6 +27,20 @@ hyp-obj-$(CONFIG_ARM_SMMU_V3_PKVM) += ../../../../../drivers/iommu/arm/arm-smmu-
 hyp-obj-$(CONFIG_ARM_SMMU_V3_PKVM) += ../../../../../drivers/iommu/io-pgtable-arm-common.o
 endif
 
+# Pixel's pKVM SMMUv3 driver, built directly into the hypervisor when it isn't
+# built as a pKVM module.
+ifeq ($(CONFIG_ARM_SMMU_V3_PKVM_PIXEL),y)
+PIXEL_SMMU_ROOT := google-modules/iommu/arm-smmu-v3
+PIXEL_SMMU := ../../../../../$(PIXEL_SMMU_ROOT)/drivers/iommu
+PIXEL_SMMU_OBJS := $(PIXEL_SMMU)/arm/arm-smmu-v3/pkvm/arm-smmu-v3.o \
+		   $(PIXEL_SMMU)/arm/arm-smmu-v3/pkvm/io-pgtable-arm.o \
+		   $(PIXEL_SMMU)/arm/arm-smmu-v3/pkvm/hyp-arm-smmu-v3-telemetry.o \
+		   $(PIXEL_SMMU)/io-pgtable-arm-common.o
+hyp-obj-y += $(PIXEL_SMMU_OBJS)
+$(foreach o,$(PIXEL_SMMU_OBJS),$(eval CFLAGS_$(o:.o=.nvhe.o) += \
+	-I$(srctree)/$(PIXEL_SMMU_ROOT)/include -I$(srctree)/drivers/iommu))
+endif
+
 $(obj)/hyp.lds: $(src)/hyp.lds.S FORCE
 	$(call if_changed_dep,cpp_lds_S)
 
