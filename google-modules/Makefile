@@ -19,16 +19,16 @@ subdir-ccflags-y += \
 	-I$(srctree)/drivers/ufs \
 	-I$(srctree)/drivers/usb \
 	-I$(srctree)/drivers/usb/host \
-	-I$(srctree)/sound/usb
+	-I$(srctree)/sound/usb \
+	-I$(srctree)/drivers/ufs/core \
+	-I$(srctree)/drivers/ufs/host \
+	-I$(srctree)/drivers/spi \
+	-I$(srctree)/drivers/android \
+	-I$(srctree)/kernel/sched \
+	-I$(srctree)
 
 ifdef CONFIG_SOC_LGA
 # Modules built with hand-written Kbuild files (kleaf kernel_module() targets)
-obj-y += bms/misc/
-obj-y += iommu/arm-smmu-v3/
-obj-y += powervr/
-obj-y += soc/gs/
-obj-y += soc/rdo/
-obj-y += trusty/
 obj-y += wlan/bcmdhd/bcm4390/
 
 # Modules built with Kbuild files generated from kleaf ddk_module() targets
