@@ -138,7 +138,7 @@ static inline struct tracepoint *tracepoint_ptr_deref(tracepoint_ptr_t *p)
 #define __TRACEPOINT_ENTRY(name)					\
 	asm("	.section \"__tracepoints_ptrs\", \"a\"		\n"	\
 	    "	.balign 4					\n"	\
-	    "	.long 	__tracepoint_" #name " - .		\n"	\
+	    "	.long 	" __stringify(__tracepoint_##name) " - .\n"	\
 	    "	.previous					\n")
 #else
 static inline struct tracepoint *tracepoint_ptr_deref(tracepoint_ptr_t *p)
