@@ -46,7 +46,7 @@ include $(srctree)/scripts/Kbuild.include
 include $(srctree)/scripts/Makefile.compiler
 
 # The filename Kbuild has precedence over Makefile
-kbuild-dir := $(if $(filter /%,$(src)),$(src),$(srctree)/$(src))
+kbuild-dir := $(src)
 kbuild-file := $(or $(wildcard $(kbuild-dir)/Kbuild),$(kbuild-dir)/Makefile)
 
 # Sets has-kbuild-options to y if there's a Makefile that defines KBUILD_OPTIONS
@@ -71,7 +71,7 @@ ifneq ($(old-kbuild-options),$(KBUILD_OPTIONS))
 # Reprocess the current directory with KBUILD_OPTIONS passed to make. This
 # Makefile is thus processed twice. Make sure to preserve the original values of
 # need-builtin and need-modorder for the next make invocation.
-subdir-ym := $(src)
+subdir-ym := $(obj)
 ifeq ($(need-builtin),1)
 subdir-builtin := $(subdir-ym)/built-in.a
 endif

@@ -23,7 +23,7 @@
 # Path to the module source
 M ?= $(shell pwd)
 
-KBUILD_OPTIONS += BCMDHD_ROOT=$(srctree)/$(src)
+KBUILD_OPTIONS += BCMDHD_ROOT=$(src)
 subdir-ccflags-y += -I$(ROOT_DIR)/private/google-modules/soc/rdo/include
 # For "include/linux/platform_data/sscoredump.h"
 subdir-ccflags-y += -I$(ROOT_DIR)/private/google-modules/soc/gs/include
