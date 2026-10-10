@@ -1994,6 +1994,9 @@ extern void __kvm_nvhe_pkvm_ptw_hvc_call(struct user_pt_regs *);
 
 void arm_smmu_telemetry_register_hvc(void)
 {
+#ifndef MODULE
+	ptw_hvc_num = __KVM_HOST_SMCCC_FUNC___pkvm_pixel_smmu_ptw;
+#else
 	if (ptw_hvc_num >= 0 || !pkvm_module_token)
 		return;
 
@@ -2002,6 +2005,7 @@ void arm_smmu_telemetry_register_hvc(void)
 	/* Negative return value indicates an error from pKVM registration */
 	if (ptw_hvc_num <= 0)
 		pr_err("Failed to register HVC call for PTW - %d\n", ptw_hvc_num);
+#endif
 }
 
 static int kvm_arm_smmu_telemetry_alloc(void)
@@ -2231,8 +2235,8 @@ static int kvm_arm_smmu_v3_init_drv(void)
 		return ret;
 	}
 
-	arm_smmu_telemetry_register_hvc();
 #endif
+	arm_smmu_telemetry_register_hvc();
 	/*
 	 * These variables are stored in the nVHE image, and won't be accessible
 	 * after KVM initialization. Ownership of kvm_arm_smmu_array will be

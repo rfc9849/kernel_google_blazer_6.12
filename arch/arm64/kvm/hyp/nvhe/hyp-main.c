@@ -2010,6 +2010,15 @@ static void handle___pkvm_host_get_ffa_version(struct kvm_cpu_context *host_ctxt
 	cpu_reg(host_ctxt, 1) = ffa_get_hypervisor_version();
 }
 
+#if IS_BUILTIN(CONFIG_ARM_SMMU_V3_PKVM_PIXEL)
+void pkvm_ptw_hvc_call(struct user_pt_regs *regs);
+
+static void handle___pkvm_pixel_smmu_ptw(struct kvm_cpu_context *host_ctxt)
+{
+	pkvm_ptw_hvc_call(&host_ctxt->regs);
+}
+#endif
+
 typedef void (*hcall_t)(struct kvm_cpu_context *);
 
 #define HANDLE_FUNC(x)	[__KVM_HOST_SMCCC_FUNC_##x] = (hcall_t)handle_##x
@@ -2099,6 +2108,9 @@ static const hcall_t host_hcall[] = {
 	HANDLE_FUNC(__pkvm_pviommu_attach),
 	HANDLE_FUNC(__pkvm_pviommu_add_vsid),
 	HANDLE_FUNC(__pkvm_host_get_ffa_version),
+#if IS_BUILTIN(CONFIG_ARM_SMMU_V3_PKVM_PIXEL)
+	HANDLE_FUNC(__pkvm_pixel_smmu_ptw),
+#endif
 };
 
 static void handle_host_hcall(struct kvm_cpu_context *host_ctxt)

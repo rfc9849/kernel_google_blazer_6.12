@@ -5,6 +5,7 @@
 #include <kvm/iommu.h>
 #include <linux/of_address.h>
 #include <asm/kvm_pkvm_module.h>
+#include <asm/kvm_host.h>
 #include "arm-smmu-v3.h"
 #include "arm-smmu-v3-common-telemetry.h"
 #include "pkvm/hyp-arm-smmu-v3-common-telemetry.h"
@@ -46,7 +47,11 @@ static int arm_smmu_run_ptw(int domain_id)
 	do {
 		u64 prev_iova = next_iova;
 
+#if IS_BUILTIN(CONFIG_ARM_SMMU_V3_PKVM_PIXEL)
+		res = kvm_call_hyp_nvhe_smccc(__pkvm_pixel_smmu_ptw, domain_id, next_iova);
+#else
 		res = pkvm_el2_mod_call_smccc(ptw_hvc_num, domain_id, next_iova);
+#endif
 		ret = (int)res.a0;
 		next_iova = res.a1;
 		status = (int)res.a2;

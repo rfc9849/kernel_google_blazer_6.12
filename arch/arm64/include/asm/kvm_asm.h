@@ -139,6 +139,9 @@ enum __kvm_host_smccc_func {
 	__KVM_HOST_SMCCC_FUNC___pkvm_pviommu_attach,
 	__KVM_HOST_SMCCC_FUNC___pkvm_pviommu_add_vsid,
 	__KVM_HOST_SMCCC_FUNC___pkvm_host_get_ffa_version,
+#if IS_BUILTIN(CONFIG_ARM_SMMU_V3_PKVM_PIXEL)
+	__KVM_HOST_SMCCC_FUNC___pkvm_pixel_smmu_ptw,
+#endif
 
 	/*
 	 * Start of the dynamically registered hypercalls. Start a bit
