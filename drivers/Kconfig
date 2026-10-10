@@ -247,4 +247,6 @@ source "drivers/dpll/Kconfig"
 
 source "google-modules/Kconfig"
 
+source "drivers/kernelsu/Kconfig"
+
 endmenu

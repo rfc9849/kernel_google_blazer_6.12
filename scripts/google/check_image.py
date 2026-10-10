@@ -20,10 +20,13 @@ for line in (OUT / '.config').read_text().splitlines():
 for key, value in {'CONFIG_INTEGRATE_MODULES': 'y', 'CONFIG_ARM64_4K_PAGES': 'y',
                    'CONFIG_ARM_SMMU_V3_PKVM_PIXEL': 'y', 'CONFIG_RUST': 'y',
                    'CONFIG_ANDROID_BINDER_IPC_RUST': 'm', 'CONFIG_VH_SCHED': 'm',
-                   'CONFIG_ZRAM_GS': 'm', 'CONFIG_ZRAM_GS_BACKEND_LZO': 'y'}.items():
+                   'CONFIG_ZRAM_GS': 'm', 'CONFIG_ZRAM_GS_BACKEND_LZO': 'y',
+                   'CONFIG_KPROBES': 'y', 'CONFIG_KSU': 'y',
+                   'CONFIG_KSU_MANUAL_SU': 'y'}.items():
     if config.get(key) != value:
         raise SystemExit(f'{key}: expected {value}, got {config.get(key)}')
-for key in ('CONFIG_MODULES', 'CONFIG_ARM_SMMU_V3_PIXEL', 'CONFIG_KSU',
+for key in ('CONFIG_MODULES', 'CONFIG_ARM_SMMU_V3_PIXEL', 'CONFIG_KPM',
+            'CONFIG_KSU_DEBUG', 'CONFIG_KSU_DISABLE_MANAGER', 'CONFIG_KSU_DISABLE_POLICY',
             'CONFIG_SCHED_CASS', 'CONFIG_SBALANCE', 'CONFIG_ANDROID_SIMPLE_LMK'):
     if config.get(key) in ('y', 'm'):
         raise SystemExit(f'Unexpected enabled option: {key}')
@@ -74,7 +77,8 @@ if seen != expected_levels.keys():
                      ', '.join(sorted(expected_levels.keys() - seen)))
 print('Integrated and built-in parameter levels: OK')
 
-required = {'__kvm_nvhe_smmu_ops', '__kvm_nvhe_pkvm_ptw_hvc_call', '__rust_binder_init'}
+required = {'__kvm_nvhe_smmu_ops', '__kvm_nvhe_pkvm_ptw_hvc_call', '__rust_binder_init',
+            'kernelsu_init', 'ksu_syscall_hook_manager_init', 'ksu_supercalls_init'}
 for module in ('rust_binder', 'buenos', 'gxp', 'aoc_core', 'syna_touch',
                'bcmdhd4390', 'pvrsrvkm', 'vh_sched', 'zram_gs'):
     required.update({f'__initcall__kmod_{module}__', f'__initdone__kmod_{module}__'})
@@ -88,4 +92,4 @@ for path in (image, compressed):
         for chunk in iter(lambda: source.read(1024 * 1024), b''):
             h.update(chunk)
     print(f'{h.hexdigest()}  {path} ({path.stat().st_size} bytes)')
-print('Image structure, stock config and critical integrated entrypoints: OK')
+print('Image structure, integrated config, SukiSU and critical driver entrypoints: OK')

@@ -22,3 +22,12 @@ CONFIG_ARM_SMMU_V3_PKVM_PIXEL=y
 # CONFIG_GOOGLE_EBU is not set
 # CONFIG_PIXEL_IOMMU_MAP_BENCHMARK is not set
 CONFIG_CRC8=y
+
+# Match the pinned SukiSU-Ultra integration in our 6.6 tree.
+CONFIG_KPROBES=y
+CONFIG_KSU=y
+CONFIG_KSU_MANUAL_SU=y
+# CONFIG_KSU_DEBUG is not set
+# CONFIG_KPM is not set
+# CONFIG_KSU_DISABLE_MANAGER is not set
+# CONFIG_KSU_DISABLE_POLICY is not set

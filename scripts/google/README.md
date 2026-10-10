@@ -23,8 +23,17 @@ Google drivers instead of porting old 6.6 drivers forward.
 ## Scope
 
 The configuration keeps Google's scheduler and vendor scheduler hooks, power
-management, thermal drivers, Binder, and memory management. There is no KernelSU
-or other root implementation, CASS, SBalance, Simple LMK, or performance tuning.
+management, thermal drivers, Binder, and memory management. SukiSU-Ultra is
+built in, matching the pinned integration in our 6.6 tree. There is no CASS,
+SBalance, Simple LMK, SUSFS, KPM, or additional performance tuning.
+
+SukiSU-Ultra lives in the `KernelSU/` submodule at
+`223897c72cc5c23b6fea84d6542aa8ef24459998` (v4.2.0-72), with
+`drivers/kernelsu` pointing to its kernel sources. It uses the upstream
+kprobe/tracepoint hooks with `CONFIG_KSU=y` and manual-su support; manager
+signature verification and per-app authorization remain enabled. No 6.6
+kprobe backports are needed: 6.12 already supports kprobes without loadable
+modules. No framework or vendor partitions are replaced.
 
 `CONFIG_INTEGRATE_MODULES=y` compiles selected modules into `vmlinux` while
 retaining their module names and delayed initialization. When Android loads its
@@ -53,6 +62,12 @@ Source path: `/home/builder/kernel_google_blazer_6.12`.
 ```sh
 scripts/google/build.sh
 ```
+
+The script initializes/checks out the recorded SukiSU submodule revision. A
+fresh checkout needs network access for this step (or use `git clone
+--recurse-submodules`). Version metadata is derived from the pinned commit,
+not a moving GitHub release or commit-count API, so subsequent Kbuild runs
+need no network access for SukiSU. The pinned revision reports version 40971.
 
 The script uses the release's Android Clang `r536225` (Clang 19), Android Rust
 `1.82.0.p2`, and bindgen. By default it looks for toolchains in the sibling
@@ -105,7 +120,8 @@ DDK fragments, followed by the minimal integration overrides in
 `package.sh` creates an AnyKernel3 ZIP from the completed `Image.lz4`. It pins
 AnyKernel3 revision `020dfeccf9d7e962a48400fc94d3e451df92eead` and the arm64
 packing tools from Magisk v31.0 with a SHA-256 check. Those are installer tools;
-**no Magisk/root payload is added to the kernel or boot ramdisk**. The installer
+**no Magisk payload is added to the boot ramdisk**. SukiSU root support is
+compiled into the kernel itself. The installer
 only targets blazer/mustang and refuses installation while running a 6.6 kernel.
 It does not replace vendor partitions.
 
@@ -131,8 +147,24 @@ After a test boot, verify pKVM/SMMU initialization, early module loading, Binder
 display/touch, storage, WLAN, modem, audio, cameras, TPU/GXP, and thermal HAL.
 A successful compile is not evidence that the device has booted successfully.
 
-### Verified bring-up: CP41.260831.016
+### Verified SukiSU bring-up: CP41.260831.016
 
+The pinned SukiSU integration built successfully on `aosp`, passed the image
+checks and QEMU early-boot regression, and completed a temporary hardware boot
+on Pixel 10 Pro with `sys.boot_completed=1`. The user confirmed SukiSU works.
+The tested kernel is `6.12.81-4k-g49babe9d2dda-dirty`, build #6,
+2026-10-10 22:07:41 UTC; SukiSU/manager version is 40971. No partitions were
+flashed. ADB shell root was not automatically granted as part of this test.
+
+Tested compressed kernel SHA-256:
+`c93988e4093bf1069a6c3de1fad94a57f772415b7777aff4d9caeb0c3f4f0201`.
+The temporary image is `out/boot-test-CP41.260831.016/test-boot-sukisu.img`;
+the corresponding AnyKernel archive ends in `20261010-220846.zip`.
+The packaged installer itself has not been flash-tested.
+
+### Verified pre-SukiSU bring-up: CP41.260831.016
+
+This baseline predates the SukiSU integration; it is not a root-enabled build.
 On 2026-10-10 UTC (2026-10-11 local), Pixel 10 Pro completed Android boot via
 `fastboot boot` with `6.12.81-4k-gad6707edd425-dirty`, build #5. The device
 reported `sys.boot_completed=1`; it did not fall back to the stock kernel.

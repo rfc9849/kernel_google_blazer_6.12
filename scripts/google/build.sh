@@ -1,6 +1,6 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-2.0-only
-# Plain-make build of the integrated, otherwise stock Pixel 10 Pro 6.12 kernel.
+# Plain-make build of the integrated Pixel 10 Pro 6.12 kernel with SukiSU-Ultra.
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 SRC=$PWD
@@ -26,7 +26,19 @@ if [ "$PAHOLE_VERSION" -lt 126 ]; then
   echo 'pahole >= 1.26 is required: 1.25 has a 4096 per-CPU variable limit' >&2
   exit 1
 fi
-MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" PAHOLE="$PAHOLE" -j"$JOBS")
+# Use the same pinned submodule/versioning as the 6.6 tree. Never follow the
+# moving upstream branch or query GitHub for version metadata during Kbuild.
+git submodule sync -q KernelSU
+git submodule update -q --init --checkout KernelSU
+KSU_TAG=$(git -C KernelSU describe --tags --abbrev=0)
+KSU_VER_ARGS=(
+  # Linux 6.12 prefixes src with srctree; avoid a second relative prefix in KSU.
+  "KSU_KERNEL_DIR=$SRC/KernelSU/kernel"
+  "CURL_BIN=true"
+  "KSU_GITHUB_VER=${KSU_TAG#v}"
+  "GITHUB_COMMITS=$(git -C KernelSU rev-list --count HEAD)"
+)
+MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" PAHOLE="$PAHOLE" -j"$JOBS" "${KSU_VER_ARGS[@]}")
 if [ "${REGENERATE_CONFIG:-0}" = 1 ]; then
   mkdir -p "$OUT"
   scripts/kconfig/merge_config.sh -m -O "$OUT" \

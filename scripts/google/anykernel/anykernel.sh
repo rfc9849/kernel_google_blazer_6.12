@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 # AnyKernel3 installation script: integrated Pixel 10 Pro / Pro XL 6.12.
 properties() { '
-kernel.string=Stock bring-up 6.12 for Pixel 10 Pro / Pro XL (blazer/mustang)
+kernel.string=Pixel 10 Pro / Pro XL 6.12 + SukiSU-Ultra (blazer/mustang)
 do.devicecheck=1
 do.modules=0
 do.systemless=1
