@@ -32,5 +32,5 @@ ifdef CONFIG_SOC_LGA
 obj-y += wlan/bcmdhd/bcm4390/
 
 # Modules built with Kbuild files generated from kleaf ddk_module() targets
-include $(srctree)/$(src)/Makefile.ddk
+include $(src)/Makefile.ddk
 endif
