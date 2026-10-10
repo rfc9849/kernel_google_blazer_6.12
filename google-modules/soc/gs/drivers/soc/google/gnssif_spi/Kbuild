@@ -20,8 +20,8 @@ gnssif-$(CONFIG_EXYNOS_GNSS_IF_SPI) += gnss_utils.o
 ddk-flags-gnssif := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/gnssif_spi \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
-	-Dcreate_link_device=gnss_create_link_device
+	-Dcreate_link_device=gnss_create_link_device \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gnss_io_device.o += $(ddk-flags-gnssif)
 CFLAGS_gnss_keplerctl_device.o += $(ddk-flags-gnssif)
 CFLAGS_gnss_link_device.o += $(ddk-flags-gnssif)

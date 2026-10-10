@@ -20,8 +20,8 @@ google_8250_base-$(CONFIG_SERIAL_8250_DW_GOOGLE_QUIRKS) += google_8250_port.o
 ddk-flags-google_8250_base := -I$(srctree)/google-modules/soc/rdo/drivers/tty/serial/8250 \
 	-I$(srctree)/google-modules/bms/misc/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
-	-Dearly_serial_setup=google_early_serial_setup
+	-Dearly_serial_setup=google_early_serial_setup \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_8250_dma.o += $(ddk-flags-google_8250_base)
 CFLAGS_google_8250_dwlib.o += $(ddk-flags-google_8250_base)
 CFLAGS_google_8250_port.o += $(ddk-flags-google_8250_base)

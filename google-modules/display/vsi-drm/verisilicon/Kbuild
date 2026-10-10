@@ -94,8 +94,8 @@ ddk-flags-vs_drm := -I$(srctree)/google-modules/display/vsi-drm/verisilicon \
 	-Wno-array-bounds \
 	-Wno-type-limits \
 	-Wno-unused-parameter \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddrm_get_colorspace_name=vs_drm_get_colorspace_name \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_vs_crtc.o += $(ddk-flags-vs_drm)
 CFLAGS_vs_dc_drm_property.o += $(ddk-flags-vs_drm)

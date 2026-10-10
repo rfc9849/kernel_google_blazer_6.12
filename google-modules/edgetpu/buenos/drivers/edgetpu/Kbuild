@@ -76,9 +76,9 @@ ddk-flags-buenos := -I$(srctree)/google-modules/edgetpu/buenos/drivers/edgetpu \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/rdo/mem-qos/include \
 	-DCONFIG_BUENOS \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-include $(srctree)/google-modules/edgetpu/buenos/drivers/edgetpu/gcip-symbol-prefix.h \
-	-DNOTRACE
+	-DNOTRACE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_buenos-platform.o += $(ddk-flags-buenos)
 CFLAGS_edgetpu-client.o += $(ddk-flags-buenos)
 CFLAGS_edgetpu-core.o += $(ddk-flags-buenos)

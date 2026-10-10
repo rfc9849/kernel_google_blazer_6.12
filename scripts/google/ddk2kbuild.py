@@ -96,6 +96,9 @@ EXCLUDE = {
 HANDWRITTEN = {"google-modules/wlan/bcmdhd/bcm4390"}
 
 EXTRA_FLAGS.update({
+    "google-modules/soc/rdo/drivers/pinctrl/google:pinctrl": [
+        "-I$(srctree)/drivers/pinctrl",
+    ],
     "google-modules/soc/gs/drivers/soc/google/vh/kernel/sched:vh_sched": [
         "-Dcpu_util_cfs=vh_cpu_util_cfs",
         "-D___update_load_avg=vh____update_load_avg",
@@ -606,8 +609,8 @@ def gen(ws, device_labels, write=True):
                         raise ValueError("Expected one location input: %s" % label)
                     c = "$(srctree)/" + files[0]
                 flags.append(c.replace('"', '\\"'))
-            flags.append("$(GOOGLE_DDK_INTERNAL_INCLUDES)")
             flags += EXTRA_FLAGS.get(t.label, [])
+            flags.append("$(GOOGLE_DDK_INTERNAL_INCLUDES)")
             # The display drivers and lwis have tracepoints with the same
             # names (e.g. dsi_tx, msleep and tracing_mark_write); disable them.
             if pkg.startswith(("google-modules/display/", "google-modules/lwis")):

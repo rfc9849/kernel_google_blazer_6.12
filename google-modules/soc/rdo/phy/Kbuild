@@ -19,7 +19,7 @@ ddk-flags-google-usb-phy := -I$(srctree)/google-modules/soc/rdo/phy \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
-	-Dphy_fw_patch=usb_phy_fw_patch
+	-Dphy_fw_patch=usb_phy_fw_patch \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-usb-phy-driver.o += $(ddk-flags-google-usb-phy)
 CFLAGS_google-usb-phy-patch.o += $(ddk-flags-google-usb-phy)

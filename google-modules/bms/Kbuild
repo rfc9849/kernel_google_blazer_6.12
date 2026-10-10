@@ -66,9 +66,9 @@ ddk-flags-google-cpm := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=google_cpm_debug_printk_prlog \
-	-Ddebug_no_logbuffer=google_cpm_debug_no_logbuffer
+	-Ddebug_no_logbuffer=google_cpm_debug_no_logbuffer \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_cpm.o += $(ddk-flags-google-cpm)
 
 # google-wlc (google-wlc.ko)
@@ -132,9 +132,9 @@ ddk-flags-hl7132 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=hl7132_debug_printk_prlog \
-	-Ddebug_no_logbuffer=hl7132_debug_no_logbuffer
+	-Ddebug_no_logbuffer=hl7132_debug_no_logbuffer \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_hl7132_charger.o += $(ddk-flags-hl7132)
 CFLAGS_hl7132_gbms_pps.o += $(ddk-flags-hl7132)
 
@@ -157,9 +157,9 @@ ddk-flags-ln8411 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=ln8411_debug_printk_prlog \
-	-Ddebug_no_logbuffer=ln8411_debug_no_logbuffer
+	-Ddebug_no_logbuffer=ln8411_debug_no_logbuffer \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_ln8411_driver.o += $(ddk-flags-ln8411)
 CFLAGS_ln8411_gbms_pps.o += $(ddk-flags-ln8411)
 
@@ -508,9 +508,9 @@ ddk-flags-pca9468 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=pca9468_debug_printk_prlog \
-	-Ddebug_no_logbuffer=pca9468_debug_no_logbuffer
+	-Ddebug_no_logbuffer=pca9468_debug_no_logbuffer \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pca9468_charger.o += $(ddk-flags-pca9468)
 CFLAGS_pca9468_gbms_pps.o += $(ddk-flags-pca9468)
 

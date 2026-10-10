@@ -50,10 +50,10 @@ ddk-flags-vh_sched := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/k
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
-	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Dcpu_util_cfs=vh_cpu_util_cfs \
 	-D___update_load_avg=vh____update_load_avg \
-	-Dset_cluster_enabled_cb=vh_set_cluster_enabled_cb
+	-Dset_cluster_enabled_cb=vh_set_cluster_enabled_cb \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_sched_lib.o += $(ddk-flags-vh_sched)
 CFLAGS_core.o += $(ddk-flags-vh_sched)
 CFLAGS_cpufreq_gov.o += $(ddk-flags-vh_sched)
