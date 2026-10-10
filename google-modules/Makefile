@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: GPL-2.0
+
+# The modules are written to be compiled externally against a kernel tree
+# located at $(KERNEL_SRC) with output at $(OUT_DIR), and to find other Google
+# modules via $(ROOT_DIR)/private/google-modules, which resolves through the
+# `private` symlink in the root source directory.
+export KERNEL_SRC := $(srctree)
+export ROOT_DIR := $(srctree)
+export OUT_DIR := $(abspath $(objtree))
+
+# Kernel-internal include directories that kleaf makes available to all DDK
+# modules via //common:all_headers_aarch64 (prepended to LINUXINCLUDE).
+subdir-ccflags-y += \
+	-I$(srctree)/drivers/dma-buf \
+	-I$(srctree)/drivers/dma \
+	-I$(srctree)/drivers/extcon \
+	-I$(srctree)/drivers/pci/controller/dwc \
+	-I$(srctree)/drivers/thermal \
+	-I$(srctree)/drivers/ufs \
+	-I$(srctree)/drivers/usb \
+	-I$(srctree)/drivers/usb/host \
+	-I$(srctree)/sound/usb
+
+ifdef CONFIG_SOC_LGA
+# Modules built with hand-written Kbuild files (kleaf kernel_module() targets)
+obj-y += bms/misc/
+obj-y += iommu/arm-smmu-v3/
+obj-y += powervr/
+obj-y += soc/gs/
+obj-y += soc/rdo/
+obj-y += trusty/
+obj-y += wlan/bcmdhd/bcm4390/
+
+# Modules built with Kbuild files generated from kleaf ddk_module() targets
+include $(srctree)/$(src)/Makefile.ddk
+endif
