@@ -2049,7 +2049,15 @@ static int elf_validity_cache_index_mod(struct load_info *info)
 		return -ENOEXEC;
 	}
 
-	if (shdr->sh_size != sizeof(struct module)) {
+	/*
+	 * Integrated modules only use the module name from the userspace .ko,
+	 * which is built for a different kernel whose struct module is expected
+	 * to differ (e.g. due to CONFIG_MODULE_UNLOAD). The name is found via
+	 * .modinfo, or else via the name field near the start of struct module,
+	 * whose offset doesn't depend on the kernel config.
+	 */
+	if (!IS_ENABLED(CONFIG_INTEGRATE_MODULES) &&
+	    shdr->sh_size != sizeof(struct module)) {
 		pr_err("module %s: .gnu.linkonce.this_module section size must match the kernel's built struct module size at run time\n",
 		       info->name ?: "(missing .modinfo section or name field)");
 		return -ENOEXEC;
