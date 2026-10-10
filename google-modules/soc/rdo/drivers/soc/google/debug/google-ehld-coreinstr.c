@@ -92,7 +92,7 @@ struct google_ehld_dev {
 	struct gdmc_iface *gdmc_iface;
 };
 
-struct google_ehld_dev ehld_dev;
+static struct google_ehld_dev ehld_dev;
 
 static void __iomem *get_coreinstr_address(u32 cpu)
 {
