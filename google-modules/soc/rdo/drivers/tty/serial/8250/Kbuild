@@ -8,6 +8,17 @@ google_8250-$(CONFIG_SERIAL_8250_DW_GOOGLE_QUIRKS) += google_8250_platform.o
 ddk-flags-google_8250 := -I$(srctree)/google-modules/soc/rdo/drivers/tty/serial/8250 \
 	-I$(srctree)/google-modules/bms/misc/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
+	-Dearly_serial_setup=google_early_serial_setup \
+	-Dnr_uarts=google_nr_uarts \
+	-Dserial8250_isa_config=google_serial8250_isa_config \
+	-Dserial8250_isa_devs=google_serial8250_isa_devs \
+	-Dserial8250_isa_init_ports=google_serial8250_isa_init_ports \
+	-Dserial8250_reg=google_serial8250_reg \
+	-Dserial8250_register_ports=google_serial8250_register_ports \
+	-Dshare_irqs=google_share_irqs \
+	-Dskip_txen_test=google_skip_txen_test \
+	-Duniv8250_port_base_ops=google_univ8250_port_base_ops \
+	-Duniv8250_port_ops=google_univ8250_port_ops \
 	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_8250_core.o += $(ddk-flags-google_8250)
 CFLAGS_google_8250_platform.o += $(ddk-flags-google_8250)
@@ -21,6 +32,16 @@ ddk-flags-google_8250_base := -I$(srctree)/google-modules/soc/rdo/drivers/tty/se
 	-I$(srctree)/google-modules/bms/misc/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-Dearly_serial_setup=google_early_serial_setup \
+	-Dnr_uarts=google_nr_uarts \
+	-Dserial8250_isa_config=google_serial8250_isa_config \
+	-Dserial8250_isa_devs=google_serial8250_isa_devs \
+	-Dserial8250_isa_init_ports=google_serial8250_isa_init_ports \
+	-Dserial8250_reg=google_serial8250_reg \
+	-Dserial8250_register_ports=google_serial8250_register_ports \
+	-Dshare_irqs=google_share_irqs \
+	-Dskip_txen_test=google_skip_txen_test \
+	-Duniv8250_port_base_ops=google_univ8250_port_base_ops \
+	-Duniv8250_port_ops=google_univ8250_port_ops \
 	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_8250_dma.o += $(ddk-flags-google_8250_base)
 CFLAGS_google_8250_dwlib.o += $(ddk-flags-google_8250_base)
@@ -34,5 +55,16 @@ ddk-flags-google_8250_dw := -I$(srctree)/google-modules/soc/rdo/drivers/tty/seri
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	-Dearly_serial_setup=google_early_serial_setup \
+	-Dnr_uarts=google_nr_uarts \
+	-Dserial8250_isa_config=google_serial8250_isa_config \
+	-Dserial8250_isa_devs=google_serial8250_isa_devs \
+	-Dserial8250_isa_init_ports=google_serial8250_isa_init_ports \
+	-Dserial8250_reg=google_serial8250_reg \
+	-Dserial8250_register_ports=google_serial8250_register_ports \
+	-Dshare_irqs=google_share_irqs \
+	-Dskip_txen_test=google_skip_txen_test \
+	-Duniv8250_port_base_ops=google_univ8250_port_base_ops \
+	-Duniv8250_port_ops=google_univ8250_port_ops \
 	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_8250_dw-main.o += $(ddk-flags-google_8250_dw)

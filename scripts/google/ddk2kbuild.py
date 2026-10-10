@@ -102,6 +102,7 @@ EXTRA_FLAGS.update({
     "google-modules/soc/gs/drivers/soc/google/vh/kernel/sched:vh_sched": [
         "-Dcpu_util_cfs=vh_cpu_util_cfs",
         "-D___update_load_avg=vh____update_load_avg",
+        "-Dentity_eligible=vh_entity_eligible",
         "-Dset_cluster_enabled_cb=vh_set_cluster_enabled_cb",
     ],
     "google-modules/soc/gs/drivers/soc/google/vh/kernel/metrics:pixel_metrics": [
@@ -151,6 +152,18 @@ class Target:
     @property
     def label(self):
         return "%s:%s" % (self.pkg, self.name)
+
+
+# Google 8250's core/platform copy must not bind to the generic 8250 globals.
+SERIAL_PRIVATE_GLOBALS = (
+    "early_serial_setup", "nr_uarts", "serial8250_isa_config", "serial8250_isa_devs",
+    "serial8250_isa_init_ports", "serial8250_reg", "serial8250_register_ports",
+    "share_irqs", "skip_txen_test", "univ8250_port_base_ops", "univ8250_port_ops",
+)
+for target in ("google_8250", "google_8250_base", "google_8250_dw"):
+    EXTRA_FLAGS["google-modules/soc/rdo/drivers/tty/serial/8250:" + target] = [
+        "-D%s=google_%s" % (name, name) for name in SERIAL_PRIVATE_GLOBALS
+    ]
 
 
 class Select:

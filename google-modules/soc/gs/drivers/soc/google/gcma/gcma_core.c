@@ -1003,7 +1003,7 @@ static int gcma_cc_init_shared_fs(uuid_t *uuid, size_t pagesize)
 	return -1;
 }
 
-struct cleancache_ops gcma_cleancache_ops = {
+static struct cleancache_ops gcma_cleancache_ops = {
 	.init_fs = gcma_cc_init_fs,
 	.init_shared_fs = gcma_cc_init_shared_fs,
 	.get_page = gcma_cc_load_page,

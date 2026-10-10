@@ -52,6 +52,7 @@ ddk-flags-vh_sched := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/k
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
 	-Dcpu_util_cfs=vh_cpu_util_cfs \
 	-D___update_load_avg=vh____update_load_avg \
+	-Dentity_eligible=vh_entity_eligible \
 	-Dset_cluster_enabled_cb=vh_set_cluster_enabled_cb \
 	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_sched_lib.o += $(ddk-flags-vh_sched)
