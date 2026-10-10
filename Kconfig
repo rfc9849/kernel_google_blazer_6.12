@@ -31,5 +31,19 @@ source "lib/Kconfig.debug"
 
 source "Documentation/Kconfig"
 
-# ANDROID: Set KCONFIG_EXT_PREFIX to decend into an external project.
-source "$(KCONFIG_EXT_PREFIX)Kconfig.ext"
+choice
+	prompt "Google SoC Kconfig.ext to use"
+	default KCONFIG_EXT_NONE
+
+config KCONFIG_EXT_NONE
+	bool "None"
+
+config KCONFIG_EXT_LGA
+	bool "Tensor G5 (lga)"
+
+endchoice
+
+if KCONFIG_EXT_LGA
+source "google-devices/lga/Kconfig.ext.lga"
+source "google-devices/muzel/Kconfig.ext.muzel"
+endif
