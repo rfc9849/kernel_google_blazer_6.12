@@ -38,7 +38,15 @@ KSU_VER_ARGS=(
   "KSU_GITHUB_VER=${KSU_TAG#v}"
   "GITHUB_COMMITS=$(git -C KernelSU rev-list --count HEAD)"
 )
-MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" PAHOLE="$PAHOLE" -j"$JOBS" "${KSU_VER_ARGS[@]}")
+# Stock Kleaf builds pass the ACK AutoFDO profile (collected on Pixel 10);
+# plain make needs it explicitly. AUTOFDO=0 builds without it for A/B tests.
+AFDO_ARGS=()
+if [ "${AUTOFDO:-1}" = 1 ]; then
+  AFDO_PROFILE=$SRC/gki/aarch64/afdo/kernel.afdo
+  [ -f "$AFDO_PROFILE" ] || { echo "Missing $AFDO_PROFILE" >&2; exit 1; }
+  AFDO_ARGS=("CLANG_AUTOFDO_PROFILE=$AFDO_PROFILE")
+fi
+MAKE=(make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 BINDGEN="$BINDGEN" PAHOLE="$PAHOLE" -j"$JOBS" "${KSU_VER_ARGS[@]}" "${AFDO_ARGS[@]}")
 if [ "${REGENERATE_CONFIG:-0}" = 1 ]; then
   mkdir -p "$OUT"
   scripts/kconfig/merge_config.sh -m -O "$OUT" \

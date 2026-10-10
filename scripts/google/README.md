@@ -25,7 +25,9 @@ Google drivers instead of porting old 6.6 drivers forward.
 The configuration keeps Google's scheduler and vendor scheduler hooks, power
 management, thermal drivers, Binder, and memory management. SukiSU-Ultra is
 built in, matching the pinned integration in our 6.6 tree. There is no CASS,
-SBalance, Simple LMK, SUSFS, KPM, or additional performance tuning.
+SBalance, Simple LMK, SUSFS or KPM. Selected driver bug fixes and low-risk
+latency/wakeup changes from Sultan Alsawaf's Pixel kernels are applied as
+separate commits with their original authorship.
 
 SukiSU-Ultra lives in the `KernelSU/` submodule at
 `223897c72cc5c23b6fea84d6542aa8ef24459998` (v4.2.0-72), with
@@ -83,7 +85,9 @@ LIBCLANG_PATH=/path/to/clang/lib \
 scripts/google/build.sh
 ```
 
-`OUT` and `JOBS` are optional. `PAHOLE` can select the BTF encoder; use >= 1.26
+Like the stock Kleaf build, the script compiles with the ACK AutoFDO profile
+`gki/aarch64/afdo/kernel.afdo` (`CONFIG_AUTOFDO_CLANG=y`). Set `AUTOFDO=0` to
+build without it for comparisons. `OUT` and `JOBS` are optional. `PAHOLE` can select the BTF encoder; use >= 1.26
 (the bring-up host uses 1.27). Version 1.25 has a fixed 4096 per-CPU variable
 limit and cannot encode this integrated image reliably. BTF remains enabled.
 The result is `out/arch/arm64/boot/Image.lz4`.
