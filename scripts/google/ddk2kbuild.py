@@ -406,6 +406,27 @@ class Workspace:
                 out.extend(self.exported_includes(norm(d, t.pkg), seen))
         return out
 
+    def configuration_inputs(self, lab, seen):
+        """Collect Kconfig/defconfig inputs exported through DDK header deps."""
+        lab = self.follow(lab)
+        if lab in seen:
+            return [], []
+        seen.add(lab)
+        t = self.targets.get(lab)
+        if t is None:
+            return [], []
+        kc = self.files(self.attr(t, "kconfigs", []), t.pkg)
+        dc = self.files(self.attr(t, "defconfigs", []), t.pkg)
+        for attr, result in (("kconfig", kc), ("defconfig", dc)):
+            value = self.attr(t, attr)
+            if value:
+                result.extend(self.files([value], t.pkg))
+        for dep in self.attr(t, "hdrs", []) + self.attr(t, "deps", []):
+            child_kc, child_dc = self.configuration_inputs(norm(dep, t.pkg), seen)
+            kc.extend(child_kc)
+            dc.extend(child_dc)
+        return kc, dc
+
     # ------------------------------------------------------------------
     # Module closure
     # ------------------------------------------------------------------
@@ -464,6 +485,11 @@ def gen(ws, device_labels, write=True):
     # device_build kconfigs are only inputs for the Kconfig.ext files
     kconfigs = []
     defconfigs = []
+    config_seen = set()
+    for label in sorted(mods):
+        kc, dc = ws.configuration_inputs(label, config_seen)
+        kconfigs.extend(kc)
+        defconfigs.extend(dc)
     generated = []
     for pkg, targets in sorted(bypkg.items()):
         if pkg in HANDWRITTEN:

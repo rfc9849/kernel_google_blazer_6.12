@@ -3,6 +3,10 @@
 config GOOGLE_MODULES
 	def_bool y
 
+# Match the kernel package selected for the stock muzel release.
+config KERNEL_PACKAGE_IS_GKI
+	def_bool y
+
 if KCONFIG_EXT_LGA
 # Module-local Kconfigs of kleaf ddk_module() targets
 source "google-modules/Kconfig.ddk"

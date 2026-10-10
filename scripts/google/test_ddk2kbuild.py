@@ -48,6 +48,12 @@ class BlazerGraphTest(unittest.TestCase):
         self.assertFalse(self.ws.condition(':mbu_production', 'google-modules/powervr'))
         self.assertEqual(self.ws.flag_value('google-devices/common:soc'), 'laguna')
 
+    def test_transitive_header_kconfigs_are_preserved(self):
+        kc, dc = self.ws.configuration_inputs(
+            'google-modules/perf/core/google_pm_qos:google_pm_qos_real', set())
+        self.assertIn('google-modules/perf/core/google_pm_qos/google_pm_qos_Kconfig', kc)
+        self.assertIn('google-modules/perf/core/google_pm_qos/google_pm_qos_enabled_defconfig', dc)
+
     def test_selected_source_files_exist(self):
         for target in self.mods.values():
             sources = self.ws.files(self.ws.attr(target, 'srcs', []), target.pkg)
