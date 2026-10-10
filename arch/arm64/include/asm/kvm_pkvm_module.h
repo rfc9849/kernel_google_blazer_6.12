@@ -13,7 +13,6 @@ struct iommu_iotlb_gather;
 struct kvm_hyp_iommu_domain;
 struct pkvm_device;
 
-#if defined(CONFIG_MODULES) && defined(CONFIG_KVM)
 enum pkvm_psci_notification {
 	PKVM_PSCI_CPU_SUSPEND,
 	PKVM_PSCI_SYSTEM_SUSPEND,
@@ -352,6 +351,7 @@ struct pkvm_module_ops {
 	ANDROID_KABI_RESERVE(32);
 };
 
+#if defined(CONFIG_MODULES) && defined(CONFIG_KVM)
 int __pkvm_load_el2_module(struct module *this, unsigned long *token);
 
 int __pkvm_register_el2_call(unsigned long hfn_hyp_va);
