@@ -9,7 +9,8 @@ export ROOT_DIR := $(srctree)
 export OUT_DIR := $(abspath $(objtree))
 
 # Kernel-internal include directories that kleaf makes available to all DDK
-# modules via //common:all_headers_aarch64 (prepended to LINUXINCLUDE).
+# modules via //common:all_headers_aarch64. These follow module-private
+# headers, matching the 6.12 DDK unsafe-header include precedence.
 export GOOGLE_DDK_INTERNAL_INCLUDES := \
 	-I$(srctree)/drivers/dma-buf \
 	-I$(srctree)/drivers/dma \
@@ -19,6 +20,12 @@ export GOOGLE_DDK_INTERNAL_INCLUDES := \
 	-I$(srctree)/drivers/ufs \
 	-I$(srctree)/drivers/usb \
 	-I$(srctree)/drivers/usb/host \
+	-I$(srctree)/drivers/usb/dwc3 \
+	-I$(srctree)/drivers/usb/gadget \
+	-I$(srctree)/drivers/usb/gadget/function \
+	-I$(srctree)/drivers/devfreq \
+	-I$(srctree)/drivers/pinctrl \
+	-I$(srctree)/arch/arm64/kvm/hyp/include \
 	-I$(srctree)/sound/usb \
 	-I$(srctree)/drivers/ufs/core \
 	-I$(srctree)/drivers/ufs/host \
