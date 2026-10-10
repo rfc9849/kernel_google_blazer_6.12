@@ -268,8 +268,9 @@ ddk-flags-pvrsrvkm := -I$(srctree)/google-modules/powervr \
 	-include \
 	$(srctree)/google-modules/powervr/pixel/lga/production/config_kernel.h \
 	-DPVR_ARCH_VOLCANIC \
-	-DPIXEL_GPU_GENERATION="lga" \
-	-DGTC_FREQUENCY_HZ=38400000
+	-DPIXEL_GPU_GENERATION=\"lga\" \
+	-DGTC_FREQUENCY_HZ=38400000 \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel/uid_time_in_state.o += $(ddk-flags-pvrsrvkm)
 CFLAGS_pvrsrvkm/services/server/env/linux/pvr_dvfs_device.o += $(ddk-flags-pvrsrvkm)
 CFLAGS_pvrsrvkm/services/server/env/linux/pvr_dvfs_common.o += $(ddk-flags-pvrsrvkm)

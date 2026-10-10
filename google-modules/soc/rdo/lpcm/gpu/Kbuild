@@ -7,5 +7,6 @@ gpu_pf_state-$(CONFIG_GOOGLE_GPU_PF_STATE) += gpu_pf_state-main.o
 ddk-flags-gpu_pf_state := -I$(srctree)/google-modules/soc/rdo/lpcm/gpu \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gpu_pf_state-main.o += $(ddk-flags-gpu_pf_state)

@@ -6,5 +6,6 @@ obj-$(CONFIG_DEBUG_REBOOT) += debug-reboot.o
 debug-reboot-$(CONFIG_DEBUG_REBOOT) += debug-reboot-main.o
 ddk-flags-debug-reboot := -I$(srctree)/google-modules/soc/gs/drivers/power/reset \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_debug-reboot-main.o += $(ddk-flags-debug-reboot)

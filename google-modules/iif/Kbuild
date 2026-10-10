@@ -16,7 +16,8 @@ iif-y += iif-sync-file.o
 iif-y += iif-trace.o
 ddk-flags-iif := -I$(srctree)/google-modules/iif \
 	-I$(srctree)/google-modules/iif/include \
-	-DCONFIG_IIF
+	-DCONFIG_IIF \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_iif-direct.o += $(ddk-flags-iif)
 CFLAGS_iif-dma-fence.o += $(ddk-flags-iif)
 CFLAGS_iif-fence-table.o += $(ddk-flags-iif)

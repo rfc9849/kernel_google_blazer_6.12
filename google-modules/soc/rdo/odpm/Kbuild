@@ -7,5 +7,6 @@ google_odpm-$(CONFIG_GOOGLE_ODPM) += google_odpm-main.o
 ddk-flags-google_odpm := -I$(srctree)/google-modules/soc/rdo/odpm \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_odpm-main.o += $(ddk-flags-google_odpm)

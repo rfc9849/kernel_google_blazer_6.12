@@ -8,5 +8,6 @@ ddk-flags-spmi_bit_bang := -I$(srctree)/google-modules/soc/gs/drivers/spmi \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-Wno-unused-function \
-	-Wno-unused-variable
+	-Wno-unused-variable \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_spmi_bit_bang-main.o += $(ddk-flags-spmi_bit_bang)

@@ -7,5 +7,6 @@ google_ip_idle_notifier-$(CONFIG_GOOGLE_IP_IDLE_NOTIFIER) += google_ip_idle_noti
 ddk-flags-google_ip_idle_notifier := -I$(srctree)/google-modules/soc/rdo/ip-idle-notifier \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_ip_idle_notifier-main.o += $(ddk-flags-google_ip_idle_notifier)

@@ -11,7 +11,8 @@ wonder-y += nl80211_ven_cmd.o
 wonder-y += ssr.o
 wonder-y += wondertap.o
 wonder-$(CONFIG_DEBUG_FS) += debugfs.o
-ddk-flags-wonder := -I$(srctree)/google-modules/wlan/wonder
+ddk-flags-wonder := -I$(srctree)/google-modules/wlan/wonder \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_band_config.o += $(ddk-flags-wonder)
 CFLAGS_mac80211.o += $(ddk-flags-wonder)
 CFLAGS_mac80211_txs.o += $(ddk-flags-wonder)

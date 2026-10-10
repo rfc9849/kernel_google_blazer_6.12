@@ -13,7 +13,8 @@ ddk-flags-google_devfreq_tj_cdev := -I$(srctree)/google-modules/perf/thermal \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_devfreq_tj_cdev.o += $(ddk-flags-google_devfreq_tj_cdev)
 CFLAGS_utils/cdev_devfreq_helper.o += $(ddk-flags-google_devfreq_tj_cdev)
 CFLAGS_utils/cdev_helper_mock.o += $(ddk-flags-google_devfreq_tj_cdev)
@@ -43,7 +44,8 @@ ddk-flags-google_powercap := -I$(srctree)/google-modules/perf/thermal \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/odpm \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_powercap_cpu.o += $(ddk-flags-google_powercap)
 CFLAGS_google_powercap_devfreq.o += $(ddk-flags-google_powercap)
 CFLAGS_google_powercap_tree.o += $(ddk-flags-google_powercap)
@@ -66,7 +68,8 @@ google_thermal_cpm_mbox-y += utils/thermal_cpm_mbox_helper.o
 google_thermal_cpm_mbox-y += utils/thermal_cpm_mbox_helper_internal.o
 ddk-flags-google_thermal_cpm_mbox := -I$(srctree)/google-modules/perf/thermal \
 	-I$(srctree)/google-modules/perf/thermal/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_thermal_cpm_mbox.o += $(ddk-flags-google_thermal_cpm_mbox)
 CFLAGS_utils/thermal_cpm_mbox_helper.o += $(ddk-flags-google_thermal_cpm_mbox)
 CFLAGS_utils/thermal_cpm_mbox_helper_internal.o += $(ddk-flags-google_thermal_cpm_mbox)
@@ -83,7 +86,8 @@ ddk-flags-google_thermal_pressure_tj := -I$(srctree)/google-modules/perf/thermal
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_thermal_pressure_tj.o += $(ddk-flags-google_thermal_pressure_tj)
 CFLAGS_utils/cdev_cpufreq_helper.o += $(ddk-flags-google_thermal_pressure_tj)
 CFLAGS_utils/cdev_helper_mock.o += $(ddk-flags-google_thermal_pressure_tj)
@@ -114,7 +118,8 @@ ddk-flags-google_thermal_sensor := -I$(srctree)/google-modules/perf/thermal \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_thermal.o += $(ddk-flags-google_thermal_sensor)
 CFLAGS_utils/thermal_msg_helper.o += $(ddk-flags-google_thermal_sensor)
 CFLAGS_utils/thermal_ntc_helper.o += $(ddk-flags-google_thermal_sensor)
@@ -143,7 +148,8 @@ ddk-flags-google_thermal_sensor_stats := -I$(srctree)/google-modules/perf/therma
 	-I$(srctree)/google-modules/perf/core/gs_perf_mon \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
-	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google
+	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_thermal_stats.o += $(ddk-flags-google_thermal_sensor_stats)
 CFLAGS_utils/thermal_msg_helper.o += $(ddk-flags-google_thermal_sensor_stats)
 CFLAGS_utils/thermal_sm_helper.o += $(ddk-flags-google_thermal_sensor_stats)
@@ -170,7 +176,8 @@ ddk-flags-google_thermal_uclamp := -I$(srctree)/google-modules/perf/thermal \
 	-I$(srctree)/google-modules/perf/core/gs_perf_mon/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_mon \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
-	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google
+	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_uclamp_cdev.o += $(ddk-flags-google_thermal_uclamp)
 CFLAGS_utils/cdev_cpufreq_helper.o += $(ddk-flags-google_thermal_uclamp)
 CFLAGS_utils/cdev_helper_mock.o += $(ddk-flags-google_thermal_uclamp)

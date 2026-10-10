@@ -13,7 +13,8 @@ ddk-flags-fwtp_cpm_module := -I$(srctree)/google-modules/soc/rdo/drivers/soc/goo
 	-I$(srctree)/google-modules/perf/thermal/include \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cpm_decoder/cpm_tracepoint_decoder.o += $(ddk-flags-fwtp_cpm_module)
 CFLAGS_cpm_decoder/perf_tracepoints.o += $(ddk-flags-fwtp_cpm_module)
 CFLAGS_cpm_decoder/power_tracepoints.o += $(ddk-flags-fwtp_cpm_module)
@@ -24,7 +25,8 @@ CFLAGS_fwtp_cpm.o += $(ddk-flags-fwtp_cpm_module)
 obj-m += fwtp_google_gdmc.o
 ddk-flags-fwtp_google_gdmc := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/fwtp \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_fwtp_google_gdmc.o += $(ddk-flags-fwtp_google_gdmc)
 
 # fwtp_lib (fwtp_lib.ko)
@@ -35,7 +37,8 @@ fwtp_lib-y += fwtp_ipc_client.o
 fwtp_lib-y += fwtp_printer.o
 ddk-flags-fwtp_lib := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/fwtp \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_fwtp.o += $(ddk-flags-fwtp_lib)
 CFLAGS_fwtp_decode.o += $(ddk-flags-fwtp_lib)
 CFLAGS_fwtp_ipc_client.o += $(ddk-flags-fwtp_lib)

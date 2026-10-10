@@ -14,6 +14,7 @@ ddk-flags-gs-drm-connector := -I$(srctree)/google-modules/display/common/gs_drm 
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-DDYNAMIC_DEBUG_MODULE=1 \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_gs_drm_connector.o += $(ddk-flags-gs-drm-connector)
 CFLAGS_gs_drm_trace.o += $(ddk-flags-gs-drm-connector)

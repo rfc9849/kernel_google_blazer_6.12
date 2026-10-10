@@ -7,5 +7,6 @@ generic_source-$(CONFIG_GOOGLE_TRACE_SOURCE) += generic_source-main.o
 ddk-flags-generic_source := -I$(srctree)/google-modules/soc/rdo/trace \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_generic_source-main.o += $(ddk-flags-generic_source)

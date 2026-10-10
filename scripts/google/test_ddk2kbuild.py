@@ -54,6 +54,12 @@ class BlazerGraphTest(unittest.TestCase):
         self.assertIn('google-modules/perf/core/google_pm_qos/google_pm_qos_Kconfig', kc)
         self.assertIn('google-modules/perf/core/google_pm_qos/google_pm_qos_enabled_defconfig', dc)
 
+    def test_stock_zram_config_target_is_preserved(self):
+        kc, dc = self.ws.configuration_inputs(
+            'google-modules/soc/gs/drivers/block/zram:zcomp_cpu', set())
+        self.assertIn('google-modules/soc/gs/drivers/block/zram/Kconfig', kc)
+        self.assertIn('google-modules/soc/gs/drivers/block/zram/defconfig', dc)
+
     def test_selected_source_files_exist(self):
         for target in self.mods.values():
             sources = self.ws.files(self.ws.attr(target, 'srcs', []), target.pkg)

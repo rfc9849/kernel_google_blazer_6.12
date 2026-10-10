@@ -12,7 +12,8 @@ google_powerdashboard-$(CONFIG_SOC_MBU) += mbu/google_powerdashboard_sysfs.o
 ddk-flags-google_powerdashboard := -I$(srctree)/google-modules/soc/rdo/powerdashboard \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_powerdashboard_helper.o += $(ddk-flags-google_powerdashboard)
 CFLAGS_google_powerdashboard_main.o += $(ddk-flags-google_powerdashboard)
 CFLAGS_lga/google_powerdashboard_impl.o += $(ddk-flags-google_powerdashboard)

@@ -18,7 +18,8 @@ u100-y += uwb_spi.o
 u100-y += uwb_sysnodes.o
 ddk-flags-u100 := -I$(srctree)/google-modules/uwb/slsi/u100 \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_uwb_controller.o += $(ddk-flags-u100)
 CFLAGS_uwb_coredump.o += $(ddk-flags-u100)
 CFLAGS_uwb_debugfs.o += $(ddk-flags-u100)

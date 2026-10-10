@@ -11,7 +11,8 @@ trusty-core-$(CONFIG_TRUSTY) += drivers/trusty/trusty-sched-share.o
 trusty-core-$(CONFIG_TRUSTY_IRQ) += drivers/trusty/trusty-irq.o
 ddk-flags-trusty-core := -I$(srctree)/google-modules/trusty \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/trusty/drivers/trusty
+	-I$(srctree)/google-modules/trusty/drivers/trusty \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 AFLAGS_drivers/trusty/trusty-smc-arm.o += $(ddk-flags-trusty-core)
 AFLAGS_drivers/trusty/trusty-smc-arm64.o += $(ddk-flags-trusty-core)
 CFLAGS_drivers/trusty/trusty.o += $(ddk-flags-trusty-core)
@@ -24,7 +25,8 @@ obj-$(CONFIG_TRUSTY_VIRTIO_IPC) += trusty-ipc.o
 trusty-ipc-$(CONFIG_TRUSTY_VIRTIO_IPC) += drivers/trusty/trusty-ipc.o
 ddk-flags-trusty-ipc := -I$(srctree)/google-modules/trusty \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/trusty/drivers/trusty
+	-I$(srctree)/google-modules/trusty/drivers/trusty \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_drivers/trusty/trusty-ipc.o += $(ddk-flags-trusty-ipc)
 
 # trusty-log (trusty-log.ko)
@@ -32,7 +34,8 @@ obj-$(CONFIG_TRUSTY_LOG) += trusty-log.o
 trusty-log-$(CONFIG_TRUSTY_LOG) += drivers/trusty/trusty-log.o
 ddk-flags-trusty-log := -I$(srctree)/google-modules/trusty \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/trusty/drivers/trusty
+	-I$(srctree)/google-modules/trusty/drivers/trusty \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_drivers/trusty/trusty-log.o += $(ddk-flags-trusty-log)
 
 # trusty-test (trusty-test.ko)
@@ -40,7 +43,8 @@ obj-$(CONFIG_TRUSTY_TEST) += trusty-test.o
 trusty-test-$(CONFIG_TRUSTY_TEST) += drivers/trusty/trusty-test.o
 ddk-flags-trusty-test := -I$(srctree)/google-modules/trusty \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/trusty/drivers/trusty
+	-I$(srctree)/google-modules/trusty/drivers/trusty \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_drivers/trusty/trusty-test.o += $(ddk-flags-trusty-test)
 
 # trusty-virtio (trusty-virtio.ko)
@@ -48,5 +52,6 @@ obj-$(CONFIG_TRUSTY_VIRTIO) += trusty-virtio.o
 trusty-virtio-$(CONFIG_TRUSTY_VIRTIO) += drivers/trusty/trusty-virtio.o
 ddk-flags-trusty-virtio := -I$(srctree)/google-modules/trusty \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/trusty/drivers/trusty
+	-I$(srctree)/google-modules/trusty/drivers/trusty \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_drivers/trusty/trusty-virtio.o += $(ddk-flags-trusty-virtio)

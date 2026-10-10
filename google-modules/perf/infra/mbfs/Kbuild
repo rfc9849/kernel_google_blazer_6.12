@@ -7,7 +7,8 @@ mbfs-y += mbfs_api.o
 mbfs-y += mbfs_mirror.o
 ddk-flags-mbfs := -I$(srctree)/google-modules/perf/infra/mbfs \
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_mbfs_api.o += $(ddk-flags-mbfs)
 CFLAGS_mbfs_mirror.o += $(ddk-flags-mbfs)
 
@@ -16,5 +17,6 @@ obj-m += mbfs_cpm_backend.o
 ddk-flags-mbfs_cpm_backend := -I$(srctree)/google-modules/perf/infra/mbfs \
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_mbfs_cpm_backend.o += $(ddk-flags-mbfs_cpm_backend)

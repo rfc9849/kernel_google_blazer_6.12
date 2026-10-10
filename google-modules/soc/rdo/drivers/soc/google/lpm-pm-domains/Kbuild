@@ -14,7 +14,8 @@ lpm_pm_domains-$(CONFIG_GOOGLE_LPM_PM_DOMAINS) += sequences/mbu_ispfe_sequence.o
 lpm_pm_domains-$(CONFIG_GOOGLE_LPM_PM_DOMAINS) += sequences/mbu_pcie_sequence.o
 lpm_pm_domains-$(CONFIG_GOOGLE_LPM_PM_DOMAINS) += sequences/sequence.o
 ddk-flags-lpm_pm_domains := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/lpm-pm-domains \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_lpm-debug.o += $(ddk-flags-lpm_pm_domains)
 CFLAGS_lpm-pm-domains.o += $(ddk-flags-lpm_pm_domains)
 CFLAGS_lpm-residency.o += $(ddk-flags-lpm_pm_domains)

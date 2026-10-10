@@ -9,5 +9,6 @@ ddk-flags-pixel-reboot := -I$(srctree)/google-modules/power/reset \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel-reboot.o += $(ddk-flags-pixel-reboot)

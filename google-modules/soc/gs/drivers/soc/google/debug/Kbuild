@@ -7,7 +7,8 @@ bookerci-$(CONFIG_BOOKERCI) += bookerci-main.o
 ddk-flags-bookerci := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_bookerci-main.o += $(ddk-flags-bookerci)
 
 # pixel-boot-metrics (pixel-boot-metrics.ko)
@@ -16,7 +17,8 @@ pixel-boot-metrics-$(CONFIG_PIXEL_BOOT_METRICS) += pixel-boot-metrics-main.o
 ddk-flags-pixel-boot-metrics := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel-boot-metrics-main.o += $(ddk-flags-pixel-boot-metrics)
 
 # pixel-debug-test (pixel-debug-test.ko)
@@ -25,5 +27,6 @@ pixel-debug-test-$(CONFIG_PIXEL_DEBUG_TEST) += pixel-debug-test-main.o
 ddk-flags-pixel-debug-test := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel-debug-test-main.o += $(ddk-flags-pixel-debug-test)

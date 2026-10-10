@@ -9,6 +9,7 @@ ddk-flags-pa_kill := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/pa_ki
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
-	-I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps
+	-I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pa_kill_core.o += $(ddk-flags-pa_kill)
 CFLAGS_pa_kill_sysfs.o += $(ddk-flags-pa_kill)

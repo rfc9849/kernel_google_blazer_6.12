@@ -6,7 +6,8 @@ obj-$(CONFIG_GOOGLE_CHIP_INFO) += goog-chip-info.o
 goog-chip-info-$(CONFIG_GOOGLE_CHIP_INFO) += goog-chip-info-main.o
 ddk-flags-goog-chip-info := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-chip-info-main.o += $(ddk-flags-goog-chip-info)
 
 # goog-mba-aggr (goog-mba-aggr.ko)
@@ -14,7 +15,8 @@ obj-$(CONFIG_GOOGLE_MBA_AGGREGATOR) += goog-mba-aggr.o
 goog-mba-aggr-$(CONFIG_GOOGLE_MBA_AGGREGATOR) += goog-mba-aggr-main.o
 ddk-flags-goog-mba-aggr := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-aggr-main.o += $(ddk-flags-goog-mba-aggr)
 
 # goog-mba-cpm-iface (goog-mba-cpm-iface.ko)
@@ -22,7 +24,8 @@ obj-$(CONFIG_GOOGLE_MBA_CPM_INTERFACE) += goog-mba-cpm-iface.o
 goog-mba-cpm-iface-$(CONFIG_GOOGLE_MBA_CPM_INTERFACE) += goog-mba-cpm-iface-main.o
 ddk-flags-goog-mba-cpm-iface := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-cpm-iface-main.o += $(ddk-flags-goog-mba-cpm-iface)
 
 # goog-mba-cpm-iface-test (goog-mba-cpm-iface-test.ko)
@@ -30,7 +33,8 @@ obj-$(CONFIG_GOOGLE_MBA_CPM_INTERFACE_TEST) += goog-mba-cpm-iface-test.o
 goog-mba-cpm-iface-test-$(CONFIG_GOOGLE_MBA_CPM_INTERFACE_TEST) += goog-mba-cpm-iface-test-main.o
 ddk-flags-goog-mba-cpm-iface-test := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-cpm-iface-test-main.o += $(ddk-flags-goog-mba-cpm-iface-test)
 
 # goog-mba-ebu-iface (goog-mba-ebu-iface.ko)
@@ -38,7 +42,8 @@ obj-$(CONFIG_GOOGLE_MBA_EBU_INTERFACE) += goog-mba-ebu-iface.o
 goog-mba-ebu-iface-$(CONFIG_GOOGLE_MBA_EBU_INTERFACE) += goog-mba-ebu-iface-main.o
 ddk-flags-goog-mba-ebu-iface := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-ebu-iface-main.o += $(ddk-flags-goog-mba-ebu-iface)
 
 # goog-mba-gdmc-iface (goog-mba-gdmc-iface.ko)
@@ -46,7 +51,8 @@ obj-$(CONFIG_GOOGLE_MBA_GDMC_INTERFACE) += goog-mba-gdmc-iface.o
 goog-mba-gdmc-iface-$(CONFIG_GOOGLE_MBA_GDMC_INTERFACE) += goog-mba-gdmc-iface-main.o
 ddk-flags-goog-mba-gdmc-iface := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-gdmc-iface-main.o += $(ddk-flags-goog-mba-gdmc-iface)
 
 # goog-mba-gdmc-iface-test (goog-mba-gdmc-iface-test.ko)
@@ -54,7 +60,8 @@ obj-$(CONFIG_GOOGLE_MBA_GDMC_INTERFACE_TEST) += goog-mba-gdmc-iface-test.o
 goog-mba-gdmc-iface-test-$(CONFIG_GOOGLE_MBA_GDMC_INTERFACE_TEST) += goog-mba-gdmc-iface-test-main.o
 ddk-flags-goog-mba-gdmc-iface-test := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-gdmc-iface-test-main.o += $(ddk-flags-goog-mba-gdmc-iface-test)
 
 # google_gdmc_dhub (google_gdmc_dhub.ko)
@@ -62,7 +69,8 @@ obj-$(CONFIG_GOOGLE_GDMC_DHUB) += google_gdmc_dhub.o
 google_gdmc_dhub-$(CONFIG_GOOGLE_GDMC_DHUB) += google_gdmc_dhub-main.o
 ddk-flags-google_gdmc_dhub := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_gdmc_dhub-main.o += $(ddk-flags-google_gdmc_dhub)
 
 # google_gtc (google_gtc.ko)
@@ -70,7 +78,8 @@ obj-$(CONFIG_GOOGLE_GTC) += google_gtc.o
 google_gtc-$(CONFIG_GOOGLE_GTC) += google_gtc-main.o
 ddk-flags-google_gtc := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_gtc-main.o += $(ddk-flags-google_gtc)
 
 # google_timestamp_sync (google_timestamp_sync.ko)
@@ -78,7 +87,8 @@ obj-$(CONFIG_GOOGLE_TIMESTAMP_SYNC) += google_timestamp_sync.o
 google_timestamp_sync-$(CONFIG_GOOGLE_TIMESTAMP_SYNC) += google_timestamp_sync-main.o
 ddk-flags-google_timestamp_sync := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_timestamp_sync-main.o += $(ddk-flags-google_timestamp_sync)
 
 # gs-debug-test (gs-debug-test.ko)
@@ -88,7 +98,8 @@ ddk-flags-gs-debug-test := -I$(srctree)/google-modules/soc/rdo/drivers/soc/googl
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gs-debug-test-main.o += $(ddk-flags-gs-debug-test)
 
 # pixel-debug-kinfo (pixel-debug-kinfo.ko)
@@ -96,5 +107,6 @@ obj-$(CONFIG_PIXEL_DEBUG_KINFO) += pixel-debug-kinfo.o
 pixel-debug-kinfo-$(CONFIG_PIXEL_DEBUG_KINFO) += pixel-debug-kinfo-main.o
 ddk-flags-pixel-debug-kinfo := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel-debug-kinfo-main.o += $(ddk-flags-pixel-debug-kinfo)

@@ -6,7 +6,8 @@ obj-$(CONFIG_GOOGLE_VOTABLE) += gvotable.o
 gvotable-$(CONFIG_GOOGLE_VOTABLE) += gvotable-main.o
 ddk-flags-gvotable := -I$(srctree)/google-modules/bms/misc \
 	-I$(srctree)/google-modules/bms/misc/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gvotable-main.o += $(ddk-flags-gvotable)
 
 # logbuffer (logbuffer.ko)
@@ -14,5 +15,6 @@ obj-$(CONFIG_GOOGLE_LOGBUFFER) += logbuffer.o
 logbuffer-$(CONFIG_GOOGLE_LOGBUFFER) += logbuffer-main.o
 ddk-flags-logbuffer := -I$(srctree)/google-modules/bms/misc \
 	-I$(srctree)/google-modules/bms/misc/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_logbuffer-main.o += $(ddk-flags-logbuffer)

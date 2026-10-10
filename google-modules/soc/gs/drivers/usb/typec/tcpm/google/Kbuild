@@ -7,7 +7,8 @@ bc_max77759-$(CONFIG_TYPEC_MAX77759) += bc_max77759-main.o
 ddk-flags-bc_max77759 := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_bc_max77759-main.o += $(ddk-flags-bc_max77759)
 
 # google_tcpci_shim (google_tcpci_shim.ko)
@@ -15,7 +16,8 @@ obj-$(CONFIG_GOOGLE_TCPCI_SHIM) += google_tcpci_shim.o
 google_tcpci_shim-$(CONFIG_GOOGLE_TCPCI_SHIM) += google_tcpci_shim-main.o
 ddk-flags-google_tcpci_shim := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_tcpci_shim-main.o += $(ddk-flags-google_tcpci_shim)
 
 # max77759_contaminant (max77759_contaminant.ko)
@@ -24,7 +26,8 @@ max77759_contaminant-$(CONFIG_TYPEC_MAX77759_CONTAMINANT) += max77759_contaminan
 ddk-flags-max77759_contaminant := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77759_contaminant-main.o += $(ddk-flags-max77759_contaminant)
 
 # max77759_helper (max77759_helper.ko)
@@ -32,7 +35,8 @@ obj-$(CONFIG_TYPEC_MAX77759) += max77759_helper.o
 max77759_helper-$(CONFIG_TYPEC_MAX77759) += max77759_helper-main.o
 ddk-flags-max77759_helper := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77759_helper-main.o += $(ddk-flags-max77759_helper)
 
 # max77779_contaminant (max77779_contaminant.ko)
@@ -41,7 +45,8 @@ max77779_contaminant-$(CONFIG_TYPEC_MAX77779_CONTAMINANT) += max77779_contaminan
 ddk-flags-max77779_contaminant := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_contaminant-main.o += $(ddk-flags-max77779_contaminant)
 
 # max777x9_contaminant (max777x9_contaminant.ko)
@@ -50,7 +55,8 @@ max777x9_contaminant-$(CONFIG_TYPEC_MAX77759) += max777x9_contaminant-main.o
 ddk-flags-max777x9_contaminant := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max777x9_contaminant-main.o += $(ddk-flags-max777x9_contaminant)
 
 # tcpci_max77759 (tcpci_max77759.ko)
@@ -59,7 +65,8 @@ tcpci_max77759-$(CONFIG_TYPEC_MAX77759) += tcpci_max77759-main.o
 ddk-flags-tcpci_max77759 := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_tcpci_max77759-main.o += $(ddk-flags-tcpci_max77759)
 
 # tcpci_max777x9_spmi (tcpci_max777x9_spmi.ko)
@@ -68,7 +75,8 @@ tcpci_max777x9_spmi-$(CONFIG_TYPEC_MAX777X9_SPMI) += tcpci_max777x9_spmi-main.o
 ddk-flags-tcpci_max777x9_spmi := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_tcpci_max777x9_spmi-main.o += $(ddk-flags-tcpci_max777x9_spmi)
 
 # usb_psy (usb_psy.ko)
@@ -77,7 +85,8 @@ usb_psy-$(CONFIG_USB_PSY) += usb_psy-main.o
 ddk-flags-usb_psy := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/bms/misc/include
+	-I$(srctree)/google-modules/bms/misc/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_usb_psy-main.o += $(ddk-flags-usb_psy)
 
 # usbc_cooling_dev (usbc_cooling_dev.ko)
@@ -86,5 +95,6 @@ usbc_cooling_dev-$(CONFIG_TYPEC_COOLING_DEV) += usbc_cooling_dev-main.o
 ddk-flags-usbc_cooling_dev := -I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/bms/misc/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_usbc_cooling_dev-main.o += $(ddk-flags-usbc_cooling_dev)

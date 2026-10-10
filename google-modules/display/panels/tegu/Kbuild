@@ -10,5 +10,6 @@ ddk-flags-panel-gs-tg4c := -I$(srctree)/google-modules/display/panels/tegu \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_panel-gs-tg4c.o += $(ddk-flags-panel-gs-tg4c)

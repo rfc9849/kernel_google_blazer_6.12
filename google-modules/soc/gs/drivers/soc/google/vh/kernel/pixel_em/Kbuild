@@ -7,5 +7,6 @@ pixel_em-$(CONFIG_PIXEL_EM) += pixel_em-main.o
 ddk-flags-pixel_em := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/pixel_em \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel_em-main.o += $(ddk-flags-pixel_em)

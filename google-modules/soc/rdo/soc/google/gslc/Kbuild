@@ -13,7 +13,8 @@ ddk-flags-gslc := -I$(srctree)/google-modules/soc/rdo/soc/google/gslc \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/pt \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gslc_cpm_mba.o += $(ddk-flags-gslc)
 CFLAGS_gslc_debugfs.o += $(ddk-flags-gslc)
 CFLAGS_gslc_partition.o += $(ddk-flags-gslc)

@@ -20,5 +20,6 @@ ddk-flags-hardlockup-debug := -I$(srctree)/google-modules/soc/rdo/hardlockup-deb
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
 	-I$(srctree)/google-modules/trusty/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_hardlockup-debug-main.o += $(ddk-flags-hardlockup-debug)

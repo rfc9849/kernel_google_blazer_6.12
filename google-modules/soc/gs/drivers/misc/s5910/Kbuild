@@ -5,5 +5,6 @@
 obj-m += s5910.o
 ddk-flags-s5910 := -I$(srctree)/google-modules/soc/gs/drivers/misc/s5910 \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_s5910.o += $(ddk-flags-s5910)

@@ -4,7 +4,8 @@
 # google-gpdma (google-gpdma.ko)
 obj-$(CONFIG_GOOGLE_GPDMA) += google-gpdma.o
 google-gpdma-$(CONFIG_GOOGLE_GPDMA) += google-gpdma-main.o
-ddk-flags-google-gpdma := -I$(srctree)/google-modules/soc/rdo/drivers/dma
+ddk-flags-google-gpdma := -I$(srctree)/google-modules/soc/rdo/drivers/dma \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-gpdma-main.o += $(ddk-flags-google-gpdma)
 
 # pl330 (pl330.ko)
@@ -13,5 +14,6 @@ pl330-$(CONFIG_PL330_DMA_GOOGLE) += pl330-main.o
 ddk-flags-pl330 := -I$(srctree)/google-modules/soc/rdo/drivers/dma \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pl330-main.o += $(ddk-flags-pl330)

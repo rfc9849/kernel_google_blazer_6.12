@@ -6,5 +6,6 @@ obj-$(CONFIG_SBB_MUX) += sbb-mux.o
 sbb-mux-$(CONFIG_SBB_MUX) += sbb-mux-main.o
 ddk-flags-sbb-mux := -I$(srctree)/google-modules/soc/gs/drivers/misc/sbb-mux \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_sbb-mux-main.o += $(ddk-flags-sbb-mux)

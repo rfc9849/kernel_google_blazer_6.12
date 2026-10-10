@@ -6,5 +6,6 @@ obj-$(CONFIG_GOOGLE_MBA_CTRL) += goog-mba-ctrl.o
 goog-mba-ctrl-$(CONFIG_GOOGLE_MBA_CTRL) += goog-mba-ctrl-main.o
 ddk-flags-goog-mba-ctrl := -I$(srctree)/google-modules/soc/rdo/drivers/mailbox \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-mba-ctrl-main.o += $(ddk-flags-goog-mba-ctrl)

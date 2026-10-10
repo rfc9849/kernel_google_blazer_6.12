@@ -5,5 +5,6 @@
 obj-$(CONFIG_GOOGLE_VOLATILE_DEBUG_UNLOCK) += gvdu.o
 gvdu-$(CONFIG_GOOGLE_VOLATILE_DEBUG_UNLOCK) += google-vdu.o
 ddk-flags-gvdu := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/vdu \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-vdu.o += $(ddk-flags-gvdu)

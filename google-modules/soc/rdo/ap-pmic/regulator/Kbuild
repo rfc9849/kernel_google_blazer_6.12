@@ -7,5 +7,6 @@ da9188-regulator-$(CONFIG_GOOGLE_DA9188_REGULATOR) += da9188-regulator-main.o
 ddk-flags-da9188-regulator := -I$(srctree)/google-modules/soc/rdo/ap-pmic/regulator \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_da9188-regulator-main.o += $(ddk-flags-da9188-regulator)

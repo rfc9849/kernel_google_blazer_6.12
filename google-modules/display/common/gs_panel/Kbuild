@@ -22,6 +22,7 @@ ddk-flags-gs-panel := -I$(srctree)/google-modules/display/common/gs_panel \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE=1 \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_drm_bridge_funcs.o += $(ddk-flags-gs-panel)
 CFLAGS_drm_panel_funcs_defaults.o += $(ddk-flags-gs-panel)

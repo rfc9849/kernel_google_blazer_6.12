@@ -17,7 +17,8 @@ ddk-flags-ufs := -I$(srctree)/google-modules/soc/rdo/drivers/ufs \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_lga/ufs-platform.o += $(ddk-flags-ufs)
 CFLAGS_mbu/ufs-platform.o += $(ddk-flags-ufs)
 CFLAGS_ufs-google-dbg.o += $(ddk-flags-ufs)

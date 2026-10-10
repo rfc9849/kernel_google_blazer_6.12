@@ -4,12 +4,14 @@
 # google_pm_qos_real (google_pm_qos.ko)
 obj-m += google_pm_qos.o
 ddk-flags-google_pm_qos := -I$(srctree)/google-modules/perf/core/google_pm_qos \
-	-I$(srctree)/google-modules/perf/core/google_pm_qos/include
+	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_pm_qos.o += $(ddk-flags-google_pm_qos)
 
 # google_vote_manager_real (google_vote_manager.ko)
 obj-m += google_vote_manager.o
 ddk-flags-google_vote_manager := -I$(srctree)/google-modules/perf/core/google_pm_qos \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
-	-I$(srctree)/google-modules/perf/infra/mbfs/include
+	-I$(srctree)/google-modules/perf/infra/mbfs/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_vote_manager.o += $(ddk-flags-google_vote_manager)

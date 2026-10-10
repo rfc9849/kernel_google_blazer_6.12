@@ -7,7 +7,8 @@ metrics_collection-y += mcf_modem.o
 metrics_collection-y += mcf_pcie.o
 metrics_collection-y += metrics_collection_core.o
 ddk-flags-metrics_collection := -I$(srctree)/google-modules/radio/common/metrics_collection \
-	-I$(srctree)/google-modules/radio/common/metrics_collection/include
+	-I$(srctree)/google-modules/radio/common/metrics_collection/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_mcf_modem.o += $(ddk-flags-metrics_collection)
 CFLAGS_mcf_pcie.o += $(ddk-flags-metrics_collection)
 CFLAGS_metrics_collection_core.o += $(ddk-flags-metrics_collection)

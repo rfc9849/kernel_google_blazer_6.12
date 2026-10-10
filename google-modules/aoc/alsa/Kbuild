@@ -14,7 +14,8 @@ ddk-flags-aoc_alsa_dev := -I$(srctree)/google-modules/aoc/alsa \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/radio/common/radio-bridge
+	-I$(srctree)/google-modules/radio/common/radio-bridge \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_alsa_card.o += $(ddk-flags-aoc_alsa_dev)
 
 # aoc_alsa_dev_util (aoc_alsa_dev_util.ko)
@@ -41,7 +42,8 @@ ddk-flags-aoc_alsa_dev_util := -I$(srctree)/google-modules/aoc/alsa \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/radio/common/radio-bridge
+	-I$(srctree)/google-modules/radio/common/radio-bridge \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_alsa_compr.o += $(ddk-flags-aoc_alsa_dev_util)
 CFLAGS_aoc_alsa_ctl.o += $(ddk-flags-aoc_alsa_dev_util)
 CFLAGS_aoc_alsa_drv.o += $(ddk-flags-aoc_alsa_dev_util)

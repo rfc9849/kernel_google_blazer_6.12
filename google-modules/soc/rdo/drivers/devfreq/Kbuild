@@ -9,7 +9,8 @@ ddk-flags-google_ccf_devfreq := -I$(srctree)/google-modules/soc/rdo/drivers/devf
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_ccf_devfreq-main.o += $(ddk-flags-google_ccf_devfreq)
 
 # google_devfreq (google_devfreq.ko)
@@ -20,5 +21,6 @@ ddk-flags-google_devfreq := -I$(srctree)/google-modules/soc/rdo/drivers/devfreq 
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_devfreq-main.o += $(ddk-flags-google_devfreq)

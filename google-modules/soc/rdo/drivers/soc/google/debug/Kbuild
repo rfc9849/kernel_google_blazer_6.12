@@ -7,7 +7,8 @@ google-ehld-coreinstr-$(CONFIG_GOOGLE_EHLD_COREINSTR) += google-ehld-coreinstr-m
 ddk-flags-google-ehld-coreinstr := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-ehld-coreinstr-main.o += $(ddk-flags-google-ehld-coreinstr)
 
 # google-pmu-ehld (google-pmu-ehld.ko)
@@ -16,7 +17,8 @@ google-pmu-ehld-$(CONFIG_GOOGLE_PMU_EHLD) += google-pmu-ehld-main.o
 ddk-flags-google-pmu-ehld := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-pmu-ehld-main.o += $(ddk-flags-google-pmu-ehld)
 
 # google-skip-s2m-voter (google-skip-s2m-voter.ko)
@@ -25,5 +27,6 @@ google-skip-s2m-voter-$(CONFIG_GOOGLE_SKIP_S2M_VOTER) += google-skip-s2m-voter-m
 ddk-flags-google-skip-s2m-voter := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/debug \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-skip-s2m-voter-main.o += $(ddk-flags-google-skip-s2m-voter)

@@ -6,7 +6,8 @@ obj-m += st33spi.o
 ddk-flags-st33spi := -I$(srctree)/google-modules/nfc/ese \
 	-I$(srctree)/google-modules/nfc \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_st33spi.o += $(ddk-flags-st33spi)
 
 # st54spi (st54spi.ko)
@@ -14,5 +15,6 @@ obj-m += st54spi.o
 ddk-flags-st54spi := -I$(srctree)/google-modules/nfc/ese \
 	-I$(srctree)/google-modules/nfc \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_st54spi.o += $(ddk-flags-st54spi)

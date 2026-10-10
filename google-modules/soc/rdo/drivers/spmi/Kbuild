@@ -5,12 +5,14 @@
 obj-$(CONFIG_GOOGLE_REGMAP_SPMI) += regmap-goog-spmi.o
 regmap-goog-spmi-$(CONFIG_GOOGLE_REGMAP_SPMI) += regmap-goog-spmi-main.o
 ddk-flags-regmap-goog-spmi := -I$(srctree)/google-modules/soc/rdo/drivers/spmi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_regmap-goog-spmi-main.o += $(ddk-flags-regmap-goog-spmi)
 
 # spmi-smartdv (spmi-smartdv.ko)
 obj-$(CONFIG_SPMI_SMARTDV) += spmi-smartdv.o
 spmi-smartdv-$(CONFIG_SPMI_SMARTDV) += spmi-smartdv-main.o
 ddk-flags-spmi-smartdv := -I$(srctree)/google-modules/soc/rdo/drivers/spmi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_spmi-smartdv-main.o += $(ddk-flags-spmi-smartdv)

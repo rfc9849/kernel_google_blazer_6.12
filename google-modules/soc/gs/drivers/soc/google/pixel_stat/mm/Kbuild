@@ -27,7 +27,8 @@ ddk-flags-pixel_stat_mm := -I$(srctree)/google-modules/soc/gs/drivers/soc/google
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
-	-I$(srctree)/google-modules/trusty/include
+	-I$(srctree)/google-modules/trusty/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cma.o += $(ddk-flags-pixel_stat_mm)
 CFLAGS_compaction.o += $(ddk-flags-pixel_stat_mm)
 CFLAGS_filemap.o += $(ddk-flags-pixel_stat_mm)

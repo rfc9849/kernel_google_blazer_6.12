@@ -11,7 +11,8 @@ ddk-flags-vh_mm := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kern
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cma.o += $(ddk-flags-vh_mm)
 CFLAGS_filemap.o += $(ddk-flags-vh_mm)
 CFLAGS_pixel_mm_hint.o += $(ddk-flags-vh_mm)

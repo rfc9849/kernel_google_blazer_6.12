@@ -6,7 +6,8 @@ obj-$(CONFIG_GOOGLE_IRQ_EXTENDED_SYSFS) += irq-extended-sysfs.o
 irq-extended-sysfs-$(CONFIG_GOOGLE_IRQ_EXTENDED_SYSFS) += irq-extended-sysfs-main.o
 ddk-flags-irq-extended-sysfs := -I$(srctree)/google-modules/soc/rdo/drivers/irqchip \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_irq-extended-sysfs-main.o += $(ddk-flags-irq-extended-sysfs)
 
 # irq-gia-google (irq-gia-google.ko)
@@ -14,7 +15,8 @@ obj-$(CONFIG_GOOGLE_GIA_IRQ) += irq-gia-google.o
 irq-gia-google-$(CONFIG_GOOGLE_GIA_IRQ) += irq-gia-google-main.o
 ddk-flags-irq-gia-google := -I$(srctree)/google-modules/soc/rdo/drivers/irqchip \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_irq-gia-google-main.o += $(ddk-flags-irq-gia-google)
 
 # irq-gia-google-test (irq-gia-google-test.ko)
@@ -22,7 +24,8 @@ obj-$(CONFIG_GOOGLE_GIA_TEST) += irq-gia-google-test.o
 irq-gia-google-test-$(CONFIG_GOOGLE_GIA_TEST) += irq-gia-google-test-main.o
 ddk-flags-irq-gia-google-test := -I$(srctree)/google-modules/soc/rdo/drivers/irqchip \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_irq-gia-google-test-main.o += $(ddk-flags-irq-gia-google-test)
 
 # irq-gia-lib (irq-gia-lib.ko)
@@ -30,7 +33,8 @@ obj-$(CONFIG_GIA_LIB) += irq-gia-lib.o
 irq-gia-lib-$(CONFIG_GIA_LIB) += irq-gia-lib-main.o
 ddk-flags-irq-gia-lib := -I$(srctree)/google-modules/soc/rdo/drivers/irqchip \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_irq-gia-lib-main.o += $(ddk-flags-irq-gia-lib)
 
 # irq-google-cpm (irq-google-cpm.ko)
@@ -38,5 +42,6 @@ obj-$(CONFIG_GOOGLE_IRQ_CPM) += irq-google-cpm.o
 irq-google-cpm-$(CONFIG_GOOGLE_IRQ_CPM) += irq-google-cpm-main.o
 ddk-flags-irq-google-cpm := -I$(srctree)/google-modules/soc/rdo/drivers/irqchip \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_irq-google-cpm-main.o += $(ddk-flags-irq-google-cpm)

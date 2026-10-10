@@ -9,7 +9,8 @@ ddk-flags-gsa_gsc := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/gsa \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gsa_gsc-main.o += $(ddk-flags-gsa_gsc)
 
 # gsa_ko (gsa.ko)
@@ -25,7 +26,8 @@ ddk-flags-gsa := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/gsa \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gsa_core.o += $(ddk-flags-gsa)
 CFLAGS_gsa_log.o += $(ddk-flags-gsa)
 CFLAGS_gsa_tz.o += $(ddk-flags-gsa)
@@ -41,5 +43,6 @@ ddk-flags-tzprot := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/gsa \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_tzprot-main.o += $(ddk-flags-tzprot)

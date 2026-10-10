@@ -421,7 +421,10 @@ class Workspace:
             value = self.attr(t, attr)
             if value:
                 result.extend(self.files([value], t.pkg))
-        for dep in self.attr(t, "hdrs", []) + self.attr(t, "deps", []):
+        deps = self.attr(t, "hdrs", []) + self.attr(t, "deps", [])
+        if self.attr(t, "config"):
+            deps = deps + [self.attr(t, "config")]
+        for dep in deps:
             child_kc, child_dc = self.configuration_inputs(norm(dep, t.pkg), seen)
             kc.extend(child_kc)
             dc.extend(child_dc)
@@ -602,7 +605,8 @@ def gen(ws, device_labels, write=True):
                     if len(files) != 1:
                         raise ValueError("Expected one location input: %s" % label)
                     c = "$(srctree)/" + files[0]
-                flags.append(c)
+                flags.append(c.replace('"', '\\"'))
+            flags.append("$(GOOGLE_DDK_INTERNAL_INCLUDES)")
             flags += EXTRA_FLAGS.get(t.label, [])
             # The display drivers and lwis have tracepoints with the same
             # names (e.g. dsi_tx, msleep and tracing_mark_write); disable them.

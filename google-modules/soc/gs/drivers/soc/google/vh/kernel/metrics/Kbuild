@@ -20,6 +20,7 @@ ddk-flags-pixel_metrics := -I$(srctree)/google-modules/soc/gs/drivers/soc/google
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Dvh_sched_switch_pixel_mod=vh_metrics_sched_switch_pixel_mod
 CFLAGS_cpuidle_metrics.o += $(ddk-flags-pixel_metrics)
 CFLAGS_perf_metrics.o += $(ddk-flags-pixel_metrics)

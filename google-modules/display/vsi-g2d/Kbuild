@@ -34,6 +34,7 @@ ddk-flags-drm_g2d := -I$(srctree)/google-modules/display/vsi-g2d \
 	-I$(srctree)/google-modules/soc/rdo/interconnect \
 	-DDYNAMIC_DEBUG_MODULE=1 \
 	-Wall \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_google/g2d_crtc.o += $(ddk-flags-drm_g2d)
 CFLAGS_google/g2d_debugfs.o += $(ddk-flags-drm_g2d)

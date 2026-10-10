@@ -33,7 +33,8 @@ ddk-flags-samsung_dma_heap := -I$(srctree)/google-modules/soc/gs/drivers/dma-buf
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/gcma
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/gcma \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gcma_heap_core.o += $(ddk-flags-samsung_dma_heap)
 CFLAGS_gcma_heap_nonsecure.o += $(ddk-flags-samsung_dma_heap)
 CFLAGS_gcma_heap_trusty.o += $(ddk-flags-samsung_dma_heap)

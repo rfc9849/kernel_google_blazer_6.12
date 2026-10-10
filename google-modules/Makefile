@@ -10,7 +10,7 @@ export OUT_DIR := $(abspath $(objtree))
 
 # Kernel-internal include directories that kleaf makes available to all DDK
 # modules via //common:all_headers_aarch64 (prepended to LINUXINCLUDE).
-subdir-ccflags-y += \
+export GOOGLE_DDK_INTERNAL_INCLUDES := \
 	-I$(srctree)/drivers/dma-buf \
 	-I$(srctree)/drivers/dma \
 	-I$(srctree)/drivers/extcon \

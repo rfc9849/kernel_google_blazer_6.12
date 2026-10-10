@@ -7,7 +7,8 @@ acfw-debug-$(CONFIG_GOOGLE_ACFW_DEBUG) += acfw-debug-main.o
 ddk-flags-acfw-debug := -I$(srctree)/google-modules/iommu/arm-smmu-v3/drivers/iommu \
 	-I$(srctree)/google-modules/iommu/arm-smmu-v3/include \
 	-Wno-missing-prototypes \
-	-Wno-unused-but-set-variable
+	-Wno-unused-but-set-variable \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_acfw-debug-main.o += $(ddk-flags-acfw-debug)
 
 # arm/arm-smmu-v3/arm_smmu_v3 (arm_smmu_v3.ko)
@@ -20,7 +21,8 @@ ddk-flags-arm_smmu_v3 := -I$(srctree)/google-modules/iommu/arm-smmu-v3/drivers/i
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-Wno-missing-prototypes \
-	-Wno-unused-but-set-variable
+	-Wno-unused-but-set-variable \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3-common-telemetry.o += $(ddk-flags-arm_smmu_v3)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3-common.o += $(ddk-flags-arm_smmu_v3)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3.o += $(ddk-flags-arm_smmu_v3)
@@ -35,7 +37,8 @@ ddk-flags-arm_smmu_v3_kvm := -I$(srctree)/google-modules/iommu/arm-smmu-v3/drive
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-Wno-missing-prototypes \
-	-Wno-unused-but-set-variable
+	-Wno-unused-but-set-variable \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3-common-telemetry.o += $(ddk-flags-arm_smmu_v3_kvm)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3-common.o += $(ddk-flags-arm_smmu_v3_kvm)
 CFLAGS_arm/arm-smmu-v3/arm-smmu-v3-kvm.o += $(ddk-flags-arm_smmu_v3_kvm)
@@ -48,7 +51,8 @@ io-pgtable-pixel-$(CONFIG_IOMMU_IO_PGTABLE_PIXEL) += io-pgtable.o
 ddk-flags-io-pgtable-pixel := -I$(srctree)/google-modules/iommu/arm-smmu-v3/drivers/iommu \
 	-I$(srctree)/google-modules/iommu/arm-smmu-v3/include \
 	-Wno-missing-prototypes \
-	-Wno-unused-but-set-variable
+	-Wno-unused-but-set-variable \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_io-pgtable-arm-common.o += $(ddk-flags-io-pgtable-pixel)
 CFLAGS_io-pgtable-arm.o += $(ddk-flags-io-pgtable-pixel)
 CFLAGS_io-pgtable.o += $(ddk-flags-io-pgtable-pixel)

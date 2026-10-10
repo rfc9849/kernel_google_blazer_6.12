@@ -13,7 +13,8 @@ ddk-flags-google-pcie := -I$(srctree)/google-modules/soc/rdo/pci \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/interconnect \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pcie-designware-host-customized.o += $(ddk-flags-google-pcie)
 CFLAGS_pcie-google-devcoredump.o += $(ddk-flags-google-pcie)
 CFLAGS_pcie-google-shim.o += $(ddk-flags-google-pcie)

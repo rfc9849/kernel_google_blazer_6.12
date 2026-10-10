@@ -7,5 +7,6 @@ aoss_ssr_notifier-$(CONFIG_AOSS_SSR_NOTIFIER) += aoss_ssr_notifier-main.o
 ddk-flags-aoss_ssr_notifier := -I$(srctree)/google-modules/soc/rdo/aoss-ssr-notifier \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoss_ssr_notifier-main.o += $(ddk-flags-aoss_ssr_notifier)

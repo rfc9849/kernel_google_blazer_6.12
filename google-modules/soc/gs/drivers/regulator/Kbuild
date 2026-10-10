@@ -8,7 +8,8 @@ ddk-flags-rt6160-regulator := -I$(srctree)/google-modules/soc/gs/drivers/regulat
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_rt6160-regulator-main.o += $(ddk-flags-rt6160-regulator)
 
 # s2dos07x02-regulator (s2dos07x02-regulator.ko)
@@ -18,7 +19,8 @@ ddk-flags-s2dos07x02-regulator := -I$(srctree)/google-modules/soc/gs/drivers/reg
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_s2dos07x02-regulator-main.o += $(ddk-flags-s2dos07x02-regulator)
 
 # slg51002-regulator (slg51002-regulator.ko)
@@ -28,7 +30,8 @@ ddk-flags-slg51002-regulator := -I$(srctree)/google-modules/soc/gs/drivers/regul
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_slg51002-regulator-main.o += $(ddk-flags-slg51002-regulator)
 
 # tps628600-regulator (tps628600-regulator.ko)
@@ -38,5 +41,6 @@ ddk-flags-tps628600-regulator := -I$(srctree)/google-modules/soc/gs/drivers/regu
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/regulator/regulator_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_tps628600-regulator-main.o += $(ddk-flags-tps628600-regulator)

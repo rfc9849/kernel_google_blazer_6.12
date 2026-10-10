@@ -19,7 +19,8 @@ ddk-flags-goog_touch_interface := -I$(srctree)/google-modules/touch/common \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_v1/goog_touch_interface.o += $(ddk-flags-goog_touch_interface)
 CFLAGS_v1/gti_sim.o += $(ddk-flags-goog_touch_interface)
 CFLAGS_v1/gti_sim_sw_emulator.o += $(ddk-flags-goog_touch_interface)
@@ -36,7 +37,8 @@ ddk-flags-heatmap := -I$(srctree)/google-modules/touch/common \
 	-I$(srctree)/google-modules/display/common/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_v1/heatmap.o += $(ddk-flags-heatmap)
 
 # touch_bus_negotiator (touch_bus_negotiator.ko)
@@ -55,7 +57,8 @@ ddk-flags-touch_bus_negotiator := -I$(srctree)/google-modules/touch/common \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/display/common/include \
 	-I$(srctree)/google-modules/display/common/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_v1/touch_bus_negotiator.o += $(ddk-flags-touch_bus_negotiator)
 
 # touch_offload (touch_offload.ko)
@@ -70,5 +73,6 @@ ddk-flags-touch_offload := -I$(srctree)/google-modules/touch/common \
 	-I$(srctree)/google-modules/display/common/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_v1/touch_offload.o += $(ddk-flags-touch_offload)

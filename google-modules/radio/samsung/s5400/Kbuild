@@ -11,7 +11,8 @@ ddk-flags-cp_pmic := -I$(srctree)/google-modules/radio/samsung/s5400 \
 	-DCPIF_WAKEPKT_SET_MARK=0x80000000 \
 	-Wformat \
 	-Wformat-zero-length \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cp_pmic.o += $(ddk-flags-cp_pmic)
 
 # cp_thermal_zone (cp_thermal_zone.ko)
@@ -24,7 +25,8 @@ ddk-flags-cp_thermal_zone := -I$(srctree)/google-modules/radio/samsung/s5400 \
 	-DCPIF_WAKEPKT_SET_MARK=0x80000000 \
 	-Wformat \
 	-Wformat-zero-length \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cp_thermal_zone.o += $(ddk-flags-cp_thermal_zone)
 
 # cpif_ko (cpif.ko)
@@ -70,7 +72,8 @@ ddk-flags-cpif := -I$(srctree)/google-modules/radio/samsung/s5400 \
 	-DCPIF_WAKEPKT_SET_MARK=0x80000000 \
 	-Wformat \
 	-Wformat-zero-length \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_bootdump_io_device.o += $(ddk-flags-cpif)
 CFLAGS_ipc_io_device.o += $(ddk-flags-cpif)
 CFLAGS_link_device.o += $(ddk-flags-cpif)
@@ -111,7 +114,8 @@ ddk-flags-cpif_page := -I$(srctree)/google-modules/radio/samsung/s5400 \
 	-DCPIF_WAKEPKT_SET_MARK=0x80000000 \
 	-Wformat \
 	-Wformat-zero-length \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cpif_page.o += $(ddk-flags-cpif_page)
 
 # shm_ipc (shm_ipc.ko)
@@ -124,5 +128,6 @@ ddk-flags-shm_ipc := -I$(srctree)/google-modules/radio/samsung/s5400 \
 	-DCPIF_WAKEPKT_SET_MARK=0x80000000 \
 	-Wformat \
 	-Wformat-zero-length \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_shm_ipc.o += $(ddk-flags-shm_ipc)

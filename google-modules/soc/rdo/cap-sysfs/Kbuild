@@ -7,5 +7,6 @@ google_cap_sysfs-$(CONFIG_GOOGLE_CAP_SYSFS) += google_cap_sysfs-main.o
 ddk-flags-google_cap_sysfs := -I$(srctree)/google-modules/soc/rdo/cap-sysfs \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_cap_sysfs-main.o += $(ddk-flags-google_cap_sysfs)

@@ -11,7 +11,8 @@ ddk-flags-google-battery := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_battery.o += $(ddk-flags-google-battery)
 CFLAGS_google_ttf.o += $(ddk-flags-google-battery)
 
@@ -31,7 +32,8 @@ ddk-flags-google-bms := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gbms_storage.o += $(ddk-flags-google-bms)
 CFLAGS_google_bms.o += $(ddk-flags-google-bms)
 CFLAGS_google_bms_usecase.o += $(ddk-flags-google-bms)
@@ -51,7 +53,8 @@ ddk-flags-google-charger := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_charger.o += $(ddk-flags-google-charger)
 
 # google-cpm (google-cpm.ko)
@@ -63,6 +66,7 @@ ddk-flags-google-cpm := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=google_cpm_debug_printk_prlog \
 	-Ddebug_no_logbuffer=google_cpm_debug_no_logbuffer
 CFLAGS_google_cpm.o += $(ddk-flags-google-cpm)
@@ -78,7 +82,8 @@ ddk-flags-google-wlc := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cps4041_wlc_chip.o += $(ddk-flags-google-wlc)
 CFLAGS_google_wlc.o += $(ddk-flags-google-wlc)
 CFLAGS_google_wlc_chip.o += $(ddk-flags-google-wlc)
@@ -91,7 +96,8 @@ ddk-flags-google_ccd := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_ccd.o += $(ddk-flags-google_ccd)
 
 # google_dock (google_dock.ko)
@@ -101,7 +107,8 @@ ddk-flags-google_dock := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_dock.o += $(ddk-flags-google_dock)
 
 # google_dual_batt_gauge (google_dual_batt_gauge.ko)
@@ -111,7 +118,8 @@ ddk-flags-google_dual_batt_gauge := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_dual_batt_gauge.o += $(ddk-flags-google_dual_batt_gauge)
 
 # hl7132 (hl7132.ko)
@@ -124,6 +132,7 @@ ddk-flags-hl7132 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=hl7132_debug_printk_prlog \
 	-Ddebug_no_logbuffer=hl7132_debug_no_logbuffer
 CFLAGS_hl7132_charger.o += $(ddk-flags-hl7132)
@@ -134,7 +143,8 @@ obj-m += ln8282_regulator.o
 ddk-flags-ln8282_regulator := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_ln8282_regulator.o += $(ddk-flags-ln8282_regulator)
 
 # ln8411 (ln8411.ko)
@@ -147,6 +157,7 @@ ddk-flags-ln8411 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=ln8411_debug_printk_prlog \
 	-Ddebug_no_logbuffer=ln8411_debug_no_logbuffer
 CFLAGS_ln8411_driver.o += $(ddk-flags-ln8411)
@@ -162,7 +173,8 @@ ddk-flags-max1720x-battery := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max1720x_battery.o += $(ddk-flags-max1720x-battery)
 CFLAGS_max1720x_outliers.o += $(ddk-flags-max1720x-battery)
 CFLAGS_max_m5.o += $(ddk-flags-max1720x-battery)
@@ -172,7 +184,8 @@ obj-m += max20339.o
 ddk-flags-max20339 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max20339.o += $(ddk-flags-max20339)
 
 # max77729-pmic (max77729-pmic.ko)
@@ -184,7 +197,8 @@ ddk-flags-max77729-pmic := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77729_pmic.o += $(ddk-flags-max77729-pmic)
 CFLAGS_max77759_maxq.o += $(ddk-flags-max77729-pmic)
 
@@ -197,7 +211,8 @@ ddk-flags-max77759-charger := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77759_charger.o += $(ddk-flags-max77759-charger)
 CFLAGS_max77759_usecase.o += $(ddk-flags-max77759-charger)
 
@@ -209,7 +224,8 @@ ddk-flags-max77779-charger := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_charger.o += $(ddk-flags-max77779-charger)
 
 # max77779-charger-i2c (max77779-charger-i2c.ko)
@@ -220,7 +236,8 @@ ddk-flags-max77779-charger-i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_charger_i2c.o += $(ddk-flags-max77779-charger-i2c)
 
 # max77779-charger-spmi (max77779-charger-spmi.ko)
@@ -231,7 +248,8 @@ ddk-flags-max77779-charger-spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_charger_spmi.o += $(ddk-flags-max77779-charger-spmi)
 
 # max77779-fg (max77779-fg.ko)
@@ -243,7 +261,8 @@ ddk-flags-max77779-fg := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_fg.o += $(ddk-flags-max77779-fg)
 CFLAGS_max77779_fg_model.o += $(ddk-flags-max77779-fg)
 
@@ -255,7 +274,8 @@ ddk-flags-max77779-fg-i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_fg_i2c.o += $(ddk-flags-max77779-fg-i2c)
 
 # max77779-fg-spmi (max77779-fg-spmi.ko)
@@ -266,7 +286,8 @@ ddk-flags-max77779-fg-spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_fg_spmi.o += $(ddk-flags-max77779-fg-spmi)
 
 # max77779-fwupdate (max77779-fwupdate.ko)
@@ -277,7 +298,8 @@ ddk-flags-max77779-fwupdate := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_fwupdate.o += $(ddk-flags-max77779-fwupdate)
 
 # max77779-sp (max77779-sp.ko)
@@ -288,7 +310,8 @@ ddk-flags-max77779-sp := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_sp.o += $(ddk-flags-max77779-sp)
 
 # max77779-sp-i2c (max77779-sp-i2c.ko)
@@ -299,7 +322,8 @@ ddk-flags-max77779-sp-i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_sp_i2c.o += $(ddk-flags-max77779-sp-i2c)
 
 # max77779-sp-spmi (max77779-sp-spmi.ko)
@@ -310,7 +334,8 @@ ddk-flags-max77779-sp-spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_sp_spmi.o += $(ddk-flags-max77779-sp-spmi)
 
 # max77779-usecase (max77779-usecase.ko)
@@ -323,7 +348,8 @@ ddk-flags-max77779-usecase := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_usecase.o += $(ddk-flags-max77779-usecase)
 CFLAGS_max77779_usecase_v1.o += $(ddk-flags-max77779-usecase)
 CFLAGS_max77779_usecase_v2.o += $(ddk-flags-max77779-usecase)
@@ -336,7 +362,8 @@ ddk-flags-max77779-vimon := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_vimon.o += $(ddk-flags-max77779-vimon)
 
 # max77779-vimon-i2c (max77779-vimon-i2c.ko)
@@ -347,7 +374,8 @@ ddk-flags-max77779-vimon-i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_vimon_i2c.o += $(ddk-flags-max77779-vimon-i2c)
 
 # max77779-vimon-spmi (max77779-vimon-spmi.ko)
@@ -358,7 +386,8 @@ ddk-flags-max77779-vimon-spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_vimon_spmi.o += $(ddk-flags-max77779-vimon-spmi)
 
 # max77779_i2cm (max77779_i2cm.ko)
@@ -366,7 +395,8 @@ obj-m += max77779_i2cm.o
 ddk-flags-max77779_i2cm := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_i2cm.o += $(ddk-flags-max77779_i2cm)
 
 # max77779_i2cm_i2c (max77779_i2cm_i2c.ko)
@@ -374,7 +404,8 @@ obj-m += max77779_i2cm_i2c.o
 ddk-flags-max77779_i2cm_i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_i2cm_i2c.o += $(ddk-flags-max77779_i2cm_i2c)
 
 # max77779_i2cm_spmi (max77779_i2cm_spmi.ko)
@@ -384,7 +415,8 @@ ddk-flags-max77779_i2cm_spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_i2cm_spmi.o += $(ddk-flags-max77779_i2cm_spmi)
 
 # max77779_pmic (max77779_pmic.ko)
@@ -392,7 +424,8 @@ obj-m += max77779_pmic.o
 ddk-flags-max77779_pmic := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic.o += $(ddk-flags-max77779_pmic)
 
 # max77779_pmic_i2c (max77779_pmic_i2c.ko)
@@ -400,7 +433,8 @@ obj-m += max77779_pmic_i2c.o
 ddk-flags-max77779_pmic_i2c := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic_i2c.o += $(ddk-flags-max77779_pmic_i2c)
 
 # max77779_pmic_irq (max77779_pmic_irq.ko)
@@ -408,7 +442,8 @@ obj-m += max77779_pmic_irq.o
 ddk-flags-max77779_pmic_irq := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic_irq.o += $(ddk-flags-max77779_pmic_irq)
 
 # max77779_pmic_pinctrl (max77779_pmic_pinctrl.ko)
@@ -416,7 +451,8 @@ obj-m += max77779_pmic_pinctrl.o
 ddk-flags-max77779_pmic_pinctrl := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic_pinctrl.o += $(ddk-flags-max77779_pmic_pinctrl)
 
 # max77779_pmic_sgpio (max77779_pmic_sgpio.ko)
@@ -424,7 +460,8 @@ obj-m += max77779_pmic_sgpio.o
 ddk-flags-max77779_pmic_sgpio := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic_sgpio.o += $(ddk-flags-max77779_pmic_sgpio)
 
 # max77779_pmic_spmi (max77779_pmic_spmi.ko)
@@ -432,7 +469,8 @@ obj-m += max77779_pmic_spmi.o
 ddk-flags-max77779_pmic_spmi := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_pmic_spmi.o += $(ddk-flags-max77779_pmic_spmi)
 
 # max77779_vdroop (max77779_vdroop.ko)
@@ -442,7 +480,8 @@ ddk-flags-max77779_vdroop := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_max77779_vdroop.o += $(ddk-flags-max77779_vdroop)
 
 # p9221 (p9221.ko)
@@ -454,7 +493,8 @@ ddk-flags-p9221 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_p9221_charger.o += $(ddk-flags-p9221)
 CFLAGS_p9221_chip.o += $(ddk-flags-p9221)
 
@@ -468,6 +508,7 @@ ddk-flags-pca9468 := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Ddebug_printk_prlog=pca9468_debug_printk_prlog \
 	-Ddebug_no_logbuffer=pca9468_debug_no_logbuffer
 CFLAGS_pca9468_charger.o += $(ddk-flags-pca9468)
@@ -478,5 +519,6 @@ obj-m += rt9471_charger.o
 ddk-flags-rt9471_charger := -I$(srctree)/google-modules/bms \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_rt9471_charger.o += $(ddk-flags-rt9471_charger)

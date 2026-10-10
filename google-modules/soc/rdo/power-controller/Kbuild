@@ -14,7 +14,8 @@ ddk-flags-power_controller := -I$(srctree)/google-modules/soc/rdo/power-controll
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gpu_core_logic.o += $(ddk-flags-power_controller)
 CFLAGS_latency/pd_latency_profile.o += $(ddk-flags-power_controller)
 CFLAGS_latency/pd_latency_stats.o += $(ddk-flags-power_controller)

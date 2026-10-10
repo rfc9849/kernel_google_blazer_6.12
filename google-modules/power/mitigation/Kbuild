@@ -63,7 +63,8 @@ ddk-flags-google_bcl := -I$(srctree)/google-modules/power/mitigation \
 	-I$(srctree)/google-modules/soc/gs/drivers/usb/typec/tcpm/google \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/soc/rdo/odpm
+	-I$(srctree)/google-modules/soc/rdo/odpm \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_bcl_core.o += $(ddk-flags-google_bcl)
 CFLAGS_google_bcl_core_helper.o += $(ddk-flags-google_bcl)
 CFLAGS_google_bcl_data_logging.o += $(ddk-flags-google_bcl)
@@ -129,5 +130,6 @@ ddk-flags-max77779-bcl-irq := -I$(srctree)/google-modules/power/mitigation \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/rdo/odpm \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_ifpmic/max77779/max77779_bcl_irq.o += $(ddk-flags-max77779-bcl-irq)

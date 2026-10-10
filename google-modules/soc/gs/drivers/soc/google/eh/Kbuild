@@ -9,5 +9,6 @@ ddk-flags-eh := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/eh \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_eh_main.o += $(ddk-flags-eh)

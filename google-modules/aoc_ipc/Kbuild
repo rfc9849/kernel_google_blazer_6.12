@@ -5,5 +5,6 @@
 obj-m += aoc_ipc.o
 aoc_ipc-y += aoc_ipc_core.o
 ddk-flags-aoc_ipc := -I$(srctree)/google-modules/aoc_ipc \
-	-I$(srctree)/google-modules/aoc
+	-I$(srctree)/google-modules/aoc \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_ipc_core.o += $(ddk-flags-aoc_ipc)

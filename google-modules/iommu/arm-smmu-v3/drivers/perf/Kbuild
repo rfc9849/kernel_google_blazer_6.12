@@ -5,5 +5,6 @@
 obj-$(CONFIG_ARM_SMMU_V3_PMU_PIXEL) += arm_smmuv3_pmu.o
 arm_smmuv3_pmu-$(CONFIG_ARM_SMMU_V3_PMU_PIXEL) += arm_smmuv3_pmu-main.o
 ddk-flags-arm_smmuv3_pmu := -I$(srctree)/google-modules/iommu/arm-smmu-v3/drivers/perf \
-	-I$(srctree)/google-modules/iommu/arm-smmu-v3/include
+	-I$(srctree)/google-modules/iommu/arm-smmu-v3/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_arm_smmuv3_pmu-main.o += $(ddk-flags-arm_smmuv3_pmu)

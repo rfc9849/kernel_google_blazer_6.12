@@ -6,5 +6,6 @@ obj-$(CONFIG_PIXEL_STAT) += pixel_stat_sysfs.o
 pixel_stat_sysfs-$(CONFIG_PIXEL_STAT) += pixel_stat_sysfs-main.o
 ddk-flags-pixel_stat_sysfs := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/pixel_stat \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixel_stat_sysfs-main.o += $(ddk-flags-pixel_stat_sysfs)

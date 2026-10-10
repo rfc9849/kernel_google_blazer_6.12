@@ -5,12 +5,14 @@
 obj-$(CONFIG_GOOGLE_GEM) += google_gem.o
 google_gem-$(CONFIG_GOOGLE_GEM) += google_gem-main.o
 ddk-flags-google_gem := -I$(srctree)/google-modules/soc/rdo/drivers/perf \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_gem-main.o += $(ddk-flags-google_gem)
 
 # google_gem_test_module (google_gem_test.ko)
 obj-$(CONFIG_GOOGLE_GEM_TEST) += google_gem_test.o
 google_gem_test-$(CONFIG_GOOGLE_GEM_TEST) += google_gem_test-main.o
 ddk-flags-google_gem_test := -I$(srctree)/google-modules/soc/rdo/drivers/perf \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_gem_test-main.o += $(ddk-flags-google_gem_test)

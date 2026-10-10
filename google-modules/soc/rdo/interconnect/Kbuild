@@ -7,7 +7,8 @@ google-icc-helper-mock-client-$(CONFIG_GOOGLE_ICC_HELPER_MOCK_CLIENT) += google_
 ddk-flags-google-icc-helper-mock-client := -I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_icc_helper_mock_client.o += $(ddk-flags-google-icc-helper-mock-client)
 
 # google-irm-stub (google-irm-stub.ko)
@@ -16,7 +17,8 @@ google-irm-stub-$(CONFIG_GOOGLE_IRM) += google_irm_stub.o
 ddk-flags-google-irm-stub := -I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_irm_stub.o += $(ddk-flags-google-irm-stub)
 
 # google_icc (google_icc.ko)
@@ -28,7 +30,8 @@ google_icc-$(CONFIG_SOC_MBU) += mbu.o
 ddk-flags-google_icc := -I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_icc_helper.o += $(ddk-flags-google_icc)
 CFLAGS_google_icc_provider.o += $(ddk-flags-google_icc)
 CFLAGS_lga.o += $(ddk-flags-google_icc)
@@ -42,7 +45,8 @@ google_irm-$(CONFIG_GOOGLE_IRM) += google_irm_of.o
 ddk-flags-google_irm := -I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_irm_core.o += $(ddk-flags-google_irm)
 CFLAGS_google_irm_debugfs.o += $(ddk-flags-google_irm)
 CFLAGS_google_irm_of.o += $(ddk-flags-google_irm)

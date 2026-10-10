@@ -8,7 +8,8 @@ vh_fs-$(CONFIG_VH_FS) += init.o
 vh_fs-$(CONFIG_VH_FS) += timerfd.o
 ddk-flags-vh_fs := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/fs \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_eventpoll.o += $(ddk-flags-vh_fs)
 CFLAGS_init.o += $(ddk-flags-vh_fs)
 CFLAGS_timerfd.o += $(ddk-flags-vh_fs)

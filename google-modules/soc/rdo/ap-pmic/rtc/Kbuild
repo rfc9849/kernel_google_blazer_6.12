@@ -7,5 +7,6 @@ da9188-rtc-$(CONFIG_GOOGLE_DA9188_RTC) += da9188-rtc-main.o
 ddk-flags-da9188-rtc := -I$(srctree)/google-modules/soc/rdo/ap-pmic/rtc \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_da9188-rtc-main.o += $(ddk-flags-da9188-rtc)

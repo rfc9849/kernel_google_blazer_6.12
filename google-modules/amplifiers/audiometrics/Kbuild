@@ -4,5 +4,6 @@
 # audiometrics (audiometrics.ko)
 obj-m += audiometrics.o
 ddk-flags-audiometrics := -I$(srctree)/google-modules/amplifiers/audiometrics \
-	-I$(srctree)/google-modules/amplifiers/audiometrics/uapi
+	-I$(srctree)/google-modules/amplifiers/audiometrics/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_audiometrics.o += $(ddk-flags-audiometrics)

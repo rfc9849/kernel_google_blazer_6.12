@@ -13,7 +13,8 @@ ddk-flags-apc_irm := -I$(srctree)/google-modules/perf/core/apc_irm \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_apc_irm_drv.o += $(ddk-flags-apc_irm)
 CFLAGS_apc_irm_util.o += $(ddk-flags-apc_irm)
 CFLAGS_apc_irm_lga.o += $(ddk-flags-apc_irm)

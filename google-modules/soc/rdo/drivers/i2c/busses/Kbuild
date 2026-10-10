@@ -7,7 +7,8 @@ i2c-designware-core-$(CONFIG_I2C_DW_GOOGLE_CORE) += i2c-designware-common.o
 i2c-designware-core-$(CONFIG_I2C_DW_GOOGLE_CORE) += i2c-designware-master.o
 i2c-designware-core-$(CONFIG_I2C_DW_GOOGLE_CORE) += i2c-trace.o
 ddk-flags-i2c-designware-core := -I$(srctree)/google-modules/soc/rdo/drivers/i2c/busses \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_i2c-designware-common.o += $(ddk-flags-i2c-designware-core)
 CFLAGS_i2c-designware-master.o += $(ddk-flags-i2c-designware-core)
 CFLAGS_i2c-trace.o += $(ddk-flags-i2c-designware-core)
@@ -17,6 +18,7 @@ obj-$(CONFIG_I2C_DW_GOOGLE_QUIRKS) += i2c-designware-platform.o
 i2c-designware-platform-$(CONFIG_I2C_DW_GOOGLE_QUIRKS) += i2c-designware-platdrv.o
 i2c-designware-platform-$(CONFIG_I2C_DW_GOOGLE_QUIRKS) += i2c-trace.o
 ddk-flags-i2c-designware-platform := -I$(srctree)/google-modules/soc/rdo/drivers/i2c/busses \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_i2c-designware-platdrv.o += $(ddk-flags-i2c-designware-platform)
 CFLAGS_i2c-trace.o += $(ddk-flags-i2c-designware-platform)

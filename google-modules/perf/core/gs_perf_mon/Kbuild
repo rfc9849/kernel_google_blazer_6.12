@@ -4,5 +4,6 @@
 # gs_perf_mon_real (gs_perf_mon.ko)
 obj-m += gs_perf_mon.o
 ddk-flags-gs_perf_mon := -I$(srctree)/google-modules/perf/core/gs_perf_mon \
-	-I$(srctree)/google-modules/perf/core/gs_perf_mon/include
+	-I$(srctree)/google-modules/perf/core/gs_perf_mon/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gs_perf_mon.o += $(ddk-flags-gs_perf_mon)

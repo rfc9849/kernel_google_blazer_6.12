@@ -8,6 +8,7 @@ dw-i3c-master-$(CONFIG_GOOGLE_DW_I3C_MASTER) += dw-i3c-master-trace.o
 ddk-flags-dw-i3c-master := -I$(srctree)/google-modules/soc/rdo/drivers/i3c/master \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_dw-i3c-core.o += $(ddk-flags-dw-i3c-master)
 CFLAGS_dw-i3c-master-trace.o += $(ddk-flags-dw-i3c-master)

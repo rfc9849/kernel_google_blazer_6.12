@@ -7,5 +7,6 @@ google_cpu_lpm_stats-$(CONFIG_GOOGLE_CPU_LPM_STATS) += google_cpu_lpm_stats-main
 ddk-flags-google_cpu_lpm_stats := -I$(srctree)/google-modules/soc/rdo/cpu-lpm-stats \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_cpu_lpm_stats-main.o += $(ddk-flags-google_cpu_lpm_stats)

@@ -8,7 +8,8 @@ ddk-flags-usb_f_dm := -I$(srctree)/google-modules/soc/gs/drivers/usb/gadget/func
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/usb/gadget/function/usb_gadget_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/usb/gadget/function/usb_gadget_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_f_dm.o += $(ddk-flags-usb_f_dm)
 
 # usb_f_dm1 (usb_f_dm1.ko)
@@ -18,5 +19,6 @@ ddk-flags-usb_f_dm1 := -I$(srctree)/google-modules/soc/gs/drivers/usb/gadget/fun
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/usb/gadget/function/usb_gadget_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/usb/gadget/function/usb_gadget_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_f_dm1.o += $(ddk-flags-usb_f_dm1)

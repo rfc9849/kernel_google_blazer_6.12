@@ -7,6 +7,7 @@ vh_cgroup-$(CONFIG_VH_CGROUP) += cgroup.o
 vh_cgroup-$(CONFIG_VH_CGROUP) += init.o
 ddk-flags-vh_cgroup := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/cgroup \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cgroup.o += $(ddk-flags-vh_cgroup)
 CFLAGS_init.o += $(ddk-flags-vh_cgroup)

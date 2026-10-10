@@ -6,5 +6,6 @@ obj-$(CONFIG_VH_SYSTRACE) += systrace.o
 systrace-$(CONFIG_VH_SYSTRACE) += systrace-main.o
 ddk-flags-systrace := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_systrace-main.o += $(ddk-flags-systrace)

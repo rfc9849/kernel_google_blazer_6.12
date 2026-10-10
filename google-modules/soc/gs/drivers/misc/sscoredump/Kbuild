@@ -5,5 +5,6 @@
 obj-m += sscoredump.o
 ddk-flags-sscoredump := -I$(srctree)/google-modules/soc/gs/drivers/misc/sscoredump \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_sscoredump.o += $(ddk-flags-sscoredump)

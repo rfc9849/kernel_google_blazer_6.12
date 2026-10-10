@@ -4,5 +4,6 @@
 # cstate_ctrl (cstate_ctrl.ko)
 obj-$(CONFIG_GOOGLE_CSTATE_CTRL) += cstate_ctrl.o
 cstate_ctrl-$(CONFIG_GOOGLE_CSTATE_CTRL) += cstate_ctrl-main.o
-ddk-flags-cstate_ctrl := -I$(srctree)/google-modules/soc/rdo/cstate-ctrl
+ddk-flags-cstate_ctrl := -I$(srctree)/google-modules/soc/rdo/cstate-ctrl \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cstate_ctrl-main.o += $(ddk-flags-cstate_ctrl)

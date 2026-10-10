@@ -6,7 +6,8 @@ obj-$(CONFIG_GOOGLE_MEM_QOS_MOCK_CLIENT) += google-mem-qos-mock-client.o
 google-mem-qos-mock-client-$(CONFIG_GOOGLE_MEM_QOS_MOCK_CLIENT) += google_mem_qos_mock_client.o
 ddk-flags-google-mem-qos-mock-client := -I$(srctree)/google-modules/soc/rdo/mem-qos \
 	-I$(srctree)/google-modules/soc/rdo/mem-qos/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_mem_qos_mock_client.o += $(ddk-flags-google-mem-qos-mock-client)
 
 # google-mem-qos_real (google-mem-qos.ko)
@@ -18,7 +19,8 @@ google-mem-qos-$(CONFIG_GOOGLE_MEM_QOS) += google_qos_box_debugfs.o
 google-mem-qos-$(CONFIG_GOOGLE_MEM_QOS) += google_qos_box_of.o
 ddk-flags-google-mem-qos := -I$(srctree)/google-modules/soc/rdo/mem-qos \
 	-I$(srctree)/google-modules/soc/rdo/mem-qos/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_mem_qos.o += $(ddk-flags-google-mem-qos)
 CFLAGS_google_mem_qos_debugfs.o += $(ddk-flags-google-mem-qos)
 CFLAGS_google_qos_box.o += $(ddk-flags-google-mem-qos)

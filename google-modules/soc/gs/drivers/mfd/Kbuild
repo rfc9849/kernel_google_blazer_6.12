@@ -6,5 +6,6 @@ obj-$(CONFIG_MFD_SLG51002) += slg51002-core.o
 slg51002-core-$(CONFIG_MFD_SLG51002) += slg51002-core-main.o
 ddk-flags-slg51002-core := -I$(srctree)/google-modules/soc/gs/drivers/mfd \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_slg51002-core-main.o += $(ddk-flags-slg51002-core)

@@ -9,7 +9,8 @@ ddk-flags-aoc_channel_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_channel_dev.o += $(ddk-flags-aoc_channel_dev)
 
 # aoc_char_dev (aoc_char_dev.ko)
@@ -21,7 +22,8 @@ ddk-flags-aoc_char_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/iif/include
+	-I$(srctree)/google-modules/iif/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_char_dev.o += $(ddk-flags-aoc_char_dev)
 
 # aoc_control_dev (aoc_control_dev.ko)
@@ -32,7 +34,8 @@ ddk-flags-aoc_control_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_control_dev.o += $(ddk-flags-aoc_control_dev)
 
 # aoc_core (aoc_core.ko)
@@ -51,7 +54,8 @@ ddk-flags-aoc_core := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc.o += $(ddk-flags-aoc_core)
 CFLAGS_aoc_firmware.o += $(ddk-flags-aoc_core)
 CFLAGS_aoc_service_core.o += $(ddk-flags-aoc_core)
@@ -69,7 +73,8 @@ ddk-flags-aoc_mbox_full_service_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_mbox_full_service_dev.o += $(ddk-flags-aoc_mbox_full_service_dev)
 
 # aoc_tbn_service_dev (aoc_tbn_service_dev.ko)
@@ -80,7 +85,8 @@ ddk-flags-aoc_tbn_service_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_tbn_service_dev.o += $(ddk-flags-aoc_tbn_service_dev)
 
 # aoc_unit_test_dev (aoc_unit_test_dev.ko)
@@ -91,7 +97,8 @@ ddk-flags-aoc_unit_test_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_unit_test_dev.o += $(ddk-flags-aoc_unit_test_dev)
 
 # aoc_uwb_platform_drv (aoc_uwb_platform_drv.ko)
@@ -102,7 +109,8 @@ ddk-flags-aoc_uwb_platform_drv := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_uwb_platform_drv.o += $(ddk-flags-aoc_uwb_platform_drv)
 
 # aoc_uwb_service_dev (aoc_uwb_service_dev.ko)
@@ -113,7 +121,8 @@ ddk-flags-aoc_uwb_service_dev := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_uwb_service_dev.o += $(ddk-flags-aoc_uwb_service_dev)
 
 # mailbox-wc (mailbox-wc.ko)
@@ -123,5 +132,6 @@ ddk-flags-mailbox-wc := -I$(srctree)/google-modules/aoc \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/trusty/include
+	-I$(srctree)/google-modules/trusty/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_mailbox-wc.o += $(ddk-flags-mailbox-wc)

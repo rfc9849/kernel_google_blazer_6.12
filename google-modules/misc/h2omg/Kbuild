@@ -11,7 +11,8 @@ h2omg-y += h2omg_slg_v3.o
 h2omg-y += h2omg_timer.o
 ddk-flags-h2omg := -I$(srctree)/google-modules/misc/h2omg \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_h2omg_atl_v1.o += $(ddk-flags-h2omg)
 CFLAGS_h2omg_common.o += $(ddk-flags-h2omg)
 CFLAGS_h2omg_main.o += $(ddk-flags-h2omg)

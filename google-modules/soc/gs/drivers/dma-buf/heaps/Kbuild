@@ -6,7 +6,8 @@ obj-$(CONFIG_DMABUF_HEAPS_DEFERRED_FREE) += deferred-free-helper.o
 deferred-free-helper-$(CONFIG_DMABUF_HEAPS_DEFERRED_FREE) += deferred-free-helper-main.o
 ddk-flags-deferred-free-helper := -I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_deferred-free-helper-main.o += $(ddk-flags-deferred-free-helper)
 
 # page_pool (page_pool.ko)
@@ -14,5 +15,6 @@ obj-$(CONFIG_DMABUF_HEAPS_PAGE_POOL) += page_pool.o
 page_pool-$(CONFIG_DMABUF_HEAPS_PAGE_POOL) += page_pool-main.o
 ddk-flags-page_pool := -I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_page_pool-main.o += $(ddk-flags-page_pool)

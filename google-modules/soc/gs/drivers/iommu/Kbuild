@@ -5,7 +5,8 @@
 obj-m += dma-iommu-vendor-hooks.o
 ddk-flags-dma-iommu-vendor-hooks := -I$(srctree)/google-modules/soc/gs/drivers/iommu \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_dma-iommu-vendor-hooks.o += $(ddk-flags-dma-iommu-vendor-hooks)
 
 # iommu_map_benchmark (iommu_map_benchmark.ko)
@@ -13,7 +14,8 @@ obj-$(CONFIG_PIXEL_IOMMU_MAP_BENCHMARK) += iommu_map_benchmark.o
 iommu_map_benchmark-$(CONFIG_PIXEL_IOMMU_MAP_BENCHMARK) += iommu_map_benchmark-main.o
 ddk-flags-iommu_map_benchmark := -I$(srctree)/google-modules/soc/gs/drivers/iommu \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_iommu_map_benchmark-main.o += $(ddk-flags-iommu_map_benchmark)
 
 # samsung-secure-iova (samsung-secure-iova.ko)
@@ -21,5 +23,6 @@ obj-$(CONFIG_SAMSUNG_SECURE_IOVA) += samsung-secure-iova.o
 samsung-secure-iova-$(CONFIG_SAMSUNG_SECURE_IOVA) += samsung-secure-iova-main.o
 ddk-flags-samsung-secure-iova := -I$(srctree)/google-modules/soc/gs/drivers/iommu \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_samsung-secure-iova-main.o += $(ddk-flags-samsung-secure-iova)

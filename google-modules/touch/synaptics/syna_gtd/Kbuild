@@ -29,7 +29,8 @@ ddk-flags-syna_touch := -I$(srctree)/google-modules/touch/synaptics/syna_gtd \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_syna_tcm2.o += $(ddk-flags-syna_touch)
 CFLAGS_syna_tcm2_cdev.o += $(ddk-flags-syna_touch)
 CFLAGS_syna_tcm2_platform_spi.o += $(ddk-flags-syna_touch)

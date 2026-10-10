@@ -22,7 +22,8 @@ ddk-flags-smra := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/smra \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
 	-I$(srctree)/google-modules/trusty/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_smra_core.o += $(ddk-flags-smra)
 CFLAGS_smra_procfs.o += $(ddk-flags-smra)
 CFLAGS_smra_sysfs.o += $(ddk-flags-smra)

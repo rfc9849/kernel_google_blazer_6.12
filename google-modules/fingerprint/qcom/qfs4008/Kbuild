@@ -16,5 +16,6 @@ ddk-flags-qbt_handler := -I$(srctree)/google-modules/fingerprint/qcom/qfs4008 \
 	-I$(srctree)/google-modules/aoc_ipc \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_qbt_handler.o += $(ddk-flags-qbt_handler)

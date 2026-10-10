@@ -4,5 +4,6 @@
 # gs_domain_idle (gs_domain_idle.ko)
 obj-m += gs_domain_idle.o
 ddk-flags-gs_domain_idle := -I$(srctree)/google-modules/perf/core/gs_domain_idle \
-	-I$(srctree)/google-modules/perf/core/gs_domain_idle/include
+	-I$(srctree)/google-modules/perf/core/gs_domain_idle/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gs_domain_idle.o += $(ddk-flags-gs_domain_idle)

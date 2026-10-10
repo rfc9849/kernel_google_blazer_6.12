@@ -6,6 +6,7 @@ obj-m += google-ra.o
 google-ra-$(CONFIG_DEBUG_FS) += google_ra_debugfs.o
 google-ra-$(CONFIG_GOOGLE_RA) += google_ra.o
 ddk-flags-google-ra := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/ra \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_ra_debugfs.o += $(ddk-flags-google-ra)
 CFLAGS_google_ra.o += $(ddk-flags-google-ra)

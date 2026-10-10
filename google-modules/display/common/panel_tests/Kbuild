@@ -10,5 +10,6 @@ ddk-flags-gs-panel-common-test := -I$(srctree)/google-modules/display/common/pan
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE=1 \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_gs-panel-common-test.o += $(ddk-flags-gs-panel-common-test)

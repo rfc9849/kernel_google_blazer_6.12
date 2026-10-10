@@ -10,7 +10,8 @@ pixelmd-y += pixelmd_cmd_lmkd_kill.o
 pixelmd-y += pixelmd_device.o
 pixelmd-y += pixelmd_events.o
 pixelmd-y += pixelmd_module.o
-ddk-flags-pixelmd := -I$(srctree)/google-modules/perf/memory/pixelmd
+ddk-flags-pixelmd := -I$(srctree)/google-modules/perf/memory/pixelmd \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pixelmd_client.o += $(ddk-flags-pixelmd)
 CFLAGS_pixelmd_client_ioctl.o += $(ddk-flags-pixelmd)
 CFLAGS_pixelmd_cmd_kswapd.o += $(ddk-flags-pixelmd)

@@ -8,5 +8,6 @@ ddk-flags-dwc3-google := -I$(srctree)/google-modules/soc/rdo/usb \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-I$(srctree)/google-modules/soc/rdo/interconnect
+	-I$(srctree)/google-modules/soc/rdo/interconnect \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_dwc3-google-main.o += $(ddk-flags-dwc3-google)

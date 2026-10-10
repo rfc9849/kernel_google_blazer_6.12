@@ -43,6 +43,7 @@ ddk-flags-mipi-dsi2h := -I$(srctree)/google-modules/display/vsi-drm/bridge/synop
 	-Wno-array-bounds \
 	-Wno-type-limits \
 	-Wno-unused-parameter \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_dw-mipi-dsi2h.o += $(ddk-flags-mipi-dsi2h)
 CFLAGS_dw-mipi-dsi2h-debugfs.o += $(ddk-flags-mipi-dsi2h)

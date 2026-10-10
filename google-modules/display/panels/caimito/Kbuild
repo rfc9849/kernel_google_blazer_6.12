@@ -10,6 +10,7 @@ ddk-flags-panel-gs-cm4 := -I$(srctree)/google-modules/display/panels/caimito \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_panel-gs-cm4.o += $(ddk-flags-panel-gs-cm4)
 
@@ -22,6 +23,7 @@ ddk-flags-panel-gs-km4 := -I$(srctree)/google-modules/display/panels/caimito \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_panel-gs-km4.o += $(ddk-flags-panel-gs-km4)
 
@@ -34,6 +36,7 @@ ddk-flags-panel-gs-tk4b := -I$(srctree)/google-modules/display/panels/caimito \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_panel-gs-tk4b.o += $(ddk-flags-panel-gs-tk4b)
 
@@ -46,5 +49,6 @@ ddk-flags-panel-gs-tk4c := -I$(srctree)/google-modules/display/panels/caimito \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_panel-gs-tk4c.o += $(ddk-flags-panel-gs-tk4c)

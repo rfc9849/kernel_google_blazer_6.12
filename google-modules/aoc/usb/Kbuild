@@ -17,6 +17,7 @@ ddk-flags-aoc_usb_driver := -I$(srctree)/google-modules/aoc/usb \
 	-I$(srctree)/google-modules/amplifiers/audiometrics/uapi \
 	-I$(srctree)/google-modules/radio/common/radio-bridge \
 	-I$(srctree)/google-modules/bms/misc/include \
-	-I$(srctree)/google-modules/soc/gs/drivers/usb/host
+	-I$(srctree)/google-modules/soc/gs/drivers/usb/host \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_aoc_usb_dev.o += $(ddk-flags-aoc_usb_driver)
 CFLAGS_usb_offload_helper.o += $(ddk-flags-aoc_usb_driver)

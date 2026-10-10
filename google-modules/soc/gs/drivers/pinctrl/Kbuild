@@ -8,5 +8,6 @@ ddk-flags-pinctrl-slg51002 := -I$(srctree)/google-modules/soc/gs/drivers/pinctrl
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-include \
-	$(srctree)/google-modules/soc/gs/drivers/pinctrl/pinctrl_defines.h
+	$(srctree)/google-modules/soc/gs/drivers/pinctrl/pinctrl_defines.h \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pinctrl-slg51002-main.o += $(ddk-flags-pinctrl-slg51002)

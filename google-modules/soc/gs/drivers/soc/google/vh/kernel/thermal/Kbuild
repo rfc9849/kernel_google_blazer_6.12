@@ -8,7 +8,8 @@ vh_thermal-$(CONFIG_VH_THERMAL) += thermal_genl.o
 vh_thermal-$(CONFIG_VH_THERMAL) += thermal_trip_flag.o
 ddk-flags-vh_thermal := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/thermal \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_init.o += $(ddk-flags-vh_thermal)
 CFLAGS_thermal_genl.o += $(ddk-flags-vh_thermal)
 CFLAGS_thermal_trip_flag.o += $(ddk-flags-vh_thermal)

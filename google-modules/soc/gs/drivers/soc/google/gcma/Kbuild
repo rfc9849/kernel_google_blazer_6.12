@@ -11,7 +11,8 @@ ddk-flags-gcma := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/gcma \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
 	-I$(srctree)/google-modules/soc/gs/drivers/dma-buf/heaps \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_gcma_vh.o += $(ddk-flags-gcma)
 CFLAGS_gcma_debug.o += $(ddk-flags-gcma)
 CFLAGS_gcma_core.o += $(ddk-flags-gcma)

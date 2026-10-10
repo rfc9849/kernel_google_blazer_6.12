@@ -8,5 +8,6 @@ ddk-flags-clk-cpm := -I$(srctree)/google-modules/soc/rdo/drivers/clk/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_clk-cpm-main.o += $(ddk-flags-clk-cpm)

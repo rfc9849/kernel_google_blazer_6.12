@@ -7,5 +7,6 @@ da9188-gpio-$(CONFIG_GOOGLE_DA9188_GPIO) += da9188-gpio-main.o
 ddk-flags-da9188-gpio := -I$(srctree)/google-modules/soc/rdo/ap-pmic/gpio \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_da9188-gpio-main.o += $(ddk-flags-da9188-gpio)

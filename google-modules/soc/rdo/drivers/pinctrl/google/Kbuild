@@ -10,7 +10,8 @@ pinctrl-$(CONFIG_PINCTRL_LGA) += pinctrl-lga.o
 pinctrl-$(CONFIG_PINCTRL_MBU) += pinctrl-mbu.o
 pinctrl-$(CONFIG_PINCTRL_RDO) += pinctrl-rdo.o
 ddk-flags-pinctrl := -I$(srctree)/google-modules/soc/rdo/drivers/pinctrl/google \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_pinctrl-debugfs.o += $(ddk-flags-pinctrl)
 CFLAGS_common.o += $(ddk-flags-pinctrl)
 CFLAGS_pinctrl-trace.o += $(ddk-flags-pinctrl)

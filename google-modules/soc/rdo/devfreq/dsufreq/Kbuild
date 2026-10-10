@@ -9,5 +9,6 @@ ddk-flags-google_dsufreq := -I$(srctree)/google-modules/soc/rdo/devfreq/dsufreq 
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
 	-I$(srctree)/google-modules/soc/rdo/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_dsufreq-main.o += $(ddk-flags-google_dsufreq)

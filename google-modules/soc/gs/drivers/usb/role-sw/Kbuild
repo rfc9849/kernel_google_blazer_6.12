@@ -6,5 +6,6 @@ obj-m += google-role-sw.o
 ddk-flags-google-role-sw := -I$(srctree)/google-modules/soc/gs/drivers/usb/role-sw \
 	-I$(srctree)/google-modules/bms/misc/include \
 	-I$(srctree)/google-modules/soc/gs/include \
-	-I$(srctree)/google-modules/soc/gs/include/uapi
+	-I$(srctree)/google-modules/soc/gs/include/uapi \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-role-sw.o += $(ddk-flags-google-role-sw)

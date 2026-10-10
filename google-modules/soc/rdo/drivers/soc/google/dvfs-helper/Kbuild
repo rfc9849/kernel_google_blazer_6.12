@@ -7,5 +7,6 @@ dvfs_helper-$(CONFIG_GOOGLE_DVFS_HELPER) += dvfs_helper-main.o
 ddk-flags-dvfs_helper := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/dvfs-helper \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_dvfs_helper-main.o += $(ddk-flags-dvfs_helper)

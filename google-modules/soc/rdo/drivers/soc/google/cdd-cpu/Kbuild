@@ -5,5 +5,6 @@
 obj-$(CONFIG_GOOGLE_CDD_CPU_IDLE_INFO) += goog-cpu-idle-info.o
 goog-cpu-idle-info-$(CONFIG_GOOGLE_CDD_CPU_IDLE_INFO) += goog-cpu-idle-info-main.o
 ddk-flags-goog-cpu-idle-info := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/cdd-cpu \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_goog-cpu-idle-info-main.o += $(ddk-flags-goog-cpu-idle-info)

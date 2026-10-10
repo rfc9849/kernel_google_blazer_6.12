@@ -40,6 +40,7 @@ ddk-flags-mipi-cdphy := -I$(srctree)/google-modules/display/vsi-drm/phy/synopsys
 	-Wno-array-bounds \
 	-Wno-type-limits \
 	-Wno-unused-parameter \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_dw-mipi-cdphy.o += $(ddk-flags-mipi-cdphy)
 CFLAGS_dw-mipi-cdphy-g301.o += $(ddk-flags-mipi-cdphy)

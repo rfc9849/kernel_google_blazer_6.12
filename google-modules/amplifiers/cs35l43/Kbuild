@@ -5,7 +5,8 @@
 obj-m += fw_cs_dsp.o
 fw_cs_dsp-y += cs_dsp.o
 ddk-flags-fw_cs_dsp := -I$(srctree)/google-modules/amplifiers/cs35l43 \
-	-I$(srctree)/google-modules/amplifiers/cs35l43/include
+	-I$(srctree)/google-modules/amplifiers/cs35l43/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cs_dsp.o += $(ddk-flags-fw_cs_dsp)
 
 # snd-soc-cs35l43 (snd-soc-cs35l43.ko)
@@ -13,7 +14,8 @@ obj-m += snd-soc-cs35l43.o
 snd-soc-cs35l43-y += cs35l43.o
 snd-soc-cs35l43-y += cs35l43-tables.o
 ddk-flags-snd-soc-cs35l43 := -I$(srctree)/google-modules/amplifiers/cs35l43 \
-	-I$(srctree)/google-modules/amplifiers/cs35l43/include
+	-I$(srctree)/google-modules/amplifiers/cs35l43/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cs35l43.o += $(ddk-flags-snd-soc-cs35l43)
 CFLAGS_cs35l43-tables.o += $(ddk-flags-snd-soc-cs35l43)
 
@@ -21,19 +23,22 @@ CFLAGS_cs35l43-tables.o += $(ddk-flags-snd-soc-cs35l43)
 obj-m += snd-soc-cs35l43-i2c.o
 snd-soc-cs35l43-i2c-y += cs35l43-i2c.o
 ddk-flags-snd-soc-cs35l43-i2c := -I$(srctree)/google-modules/amplifiers/cs35l43 \
-	-I$(srctree)/google-modules/amplifiers/cs35l43/include
+	-I$(srctree)/google-modules/amplifiers/cs35l43/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cs35l43-i2c.o += $(ddk-flags-snd-soc-cs35l43-i2c)
 
 # snd-soc-cs35l43-spi (snd-soc-cs35l43-spi.ko)
 obj-m += snd-soc-cs35l43-spi.o
 snd-soc-cs35l43-spi-y += cs35l43-spi.o
 ddk-flags-snd-soc-cs35l43-spi := -I$(srctree)/google-modules/amplifiers/cs35l43 \
-	-I$(srctree)/google-modules/amplifiers/cs35l43/include
+	-I$(srctree)/google-modules/amplifiers/cs35l43/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_cs35l43-spi.o += $(ddk-flags-snd-soc-cs35l43-spi)
 
 # snd-soc-wm-adsp (snd-soc-wm-adsp.ko)
 obj-m += snd-soc-wm-adsp.o
 snd-soc-wm-adsp-y += wm_adsp.o
 ddk-flags-snd-soc-wm-adsp := -I$(srctree)/google-modules/amplifiers/cs35l43 \
-	-I$(srctree)/google-modules/amplifiers/cs35l43/include
+	-I$(srctree)/google-modules/amplifiers/cs35l43/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_wm_adsp.o += $(ddk-flags-snd-soc-wm-adsp)

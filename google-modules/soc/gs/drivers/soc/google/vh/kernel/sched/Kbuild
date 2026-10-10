@@ -7,7 +7,8 @@ sched_tp-$(CONFIG_VH_SCHED) += sched_tp-main.o
 ddk-flags-sched_tp := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/sched \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_sched_tp-main.o += $(ddk-flags-sched_tp)
 
 # vh_preemptirq_long (vh_preemptirq_long.ko)
@@ -17,7 +18,8 @@ vh_preemptirq_long-$(CONFIG_VH_PREEMPTIRQ_TRACEPOINTS) += preemptirq_long.o
 ddk-flags-vh_preemptirq_long := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/kernel/sched \
 	-I$(srctree)/google-modules/soc/gs/include \
 	-I$(srctree)/google-modules/soc/gs/include/uapi \
-	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include
+	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_init_preemptirq_long.o += $(ddk-flags-vh_preemptirq_long)
 CFLAGS_preemptirq_long.o += $(ddk-flags-vh_preemptirq_long)
 
@@ -48,6 +50,7 @@ ddk-flags-vh_sched := -I$(srctree)/google-modules/soc/gs/drivers/soc/google/vh/k
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-Dcpu_util_cfs=vh_cpu_util_cfs \
 	-D___update_load_avg=vh____update_load_avg \
 	-Dset_cluster_enabled_cb=vh_set_cluster_enabled_cb

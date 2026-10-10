@@ -5,5 +5,6 @@
 obj-$(CONFIG_GOOGLE_SST_PLATFORM) += google_sst.o
 google_sst-$(CONFIG_GOOGLE_SST_PLATFORM) += google_sst_platform.o
 ddk-flags-google_sst := -I$(srctree)/google-modules/soc/rdo/clocksource/google/sst \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google_sst_platform.o += $(ddk-flags-google_sst)

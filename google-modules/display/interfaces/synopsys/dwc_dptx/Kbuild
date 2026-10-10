@@ -43,6 +43,7 @@ ddk-flags-dwc_dptx := -I$(srctree)/google-modules/display/interfaces/synopsys/dw
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-Wno-unused \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_api/api.o += $(ddk-flags-dwc_dptx)
 CFLAGS_audio_bridge.o += $(ddk-flags-dwc_dptx)

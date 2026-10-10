@@ -9,7 +9,8 @@ gcdd-$(CONFIG_GOOGLE_CRASH_DEBUG_DUMP) += google-cdd-log.o
 gcdd-$(CONFIG_GOOGLE_CRASH_DEBUG_DUMP) += google-cdd-log-suspend.o
 gcdd-$(CONFIG_GOOGLE_CRASH_DEBUG_DUMP) += google-cdd-utils.o
 ddk-flags-gcdd := -I$(srctree)/google-modules/soc/rdo/drivers/soc/google/cdd \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_google-cdd.o += $(ddk-flags-gcdd)
 CFLAGS_google-cdd-dpm.o += $(ddk-flags-gcdd)
 CFLAGS_google-cdd-log.o += $(ddk-flags-gcdd)

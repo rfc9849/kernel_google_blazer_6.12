@@ -22,7 +22,8 @@ ddk-flags-vpu := -I$(srctree)/google-modules/video/cnm \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/trusty/drivers/trusty \
 	-DDYNAMIC_DEBUG_MODULE \
-	-Wformat
+	-Wformat \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_vpu_debugfs.o += $(ddk-flags-vpu)
 CFLAGS_vpu_ioctl.o += $(ddk-flags-vpu)
 CFLAGS_vpu_of.o += $(ddk-flags-vpu)

@@ -52,6 +52,7 @@ ddk-flags-lwis := -I$(srctree)/google-modules/lwis \
 	-I$(srctree)/google-modules/soc/rdo/interconnect \
 	-I$(srctree)/google-modules/soc/rdo/mem-qos/include \
 	-Wall \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES) \
 	-DNOTRACE
 CFLAGS_lwis_allocator.o += $(ddk-flags-lwis)
 CFLAGS_lwis_buffer.o += $(ddk-flags-lwis)

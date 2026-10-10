@@ -9,7 +9,8 @@ ebu-google-y += ebu_lga.o
 ebu-google-y += ebu_malibu.o
 ddk-flags-ebu-google := -I$(srctree)/google-modules/soc/rdo/ebu \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-Wno-missing-prototypes
+	-Wno-missing-prototypes \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_ebu_fw.o += $(ddk-flags-ebu-google)
 CFLAGS_ebu_google.o += $(ddk-flags-ebu-google)
 CFLAGS_ebu_lga.o += $(ddk-flags-ebu-google)

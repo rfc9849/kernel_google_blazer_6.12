@@ -7,6 +7,7 @@ rst-cpm-$(CONFIG_GOOGLE_CPM_RST) += rst-cpm-main.o
 rst-cpm-$(CONFIG_SOC_MBU) += rst-cpm-mbu.o
 ddk-flags-rst-cpm := -I$(srctree)/google-modules/soc/rdo/drivers/rst/google \
 	-I$(srctree)/google-modules/soc/rdo/include \
-	-DDYNAMIC_DEBUG_MODULE
+	-DDYNAMIC_DEBUG_MODULE \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_rst-cpm-main.o += $(ddk-flags-rst-cpm)
 CFLAGS_rst-cpm-mbu.o += $(ddk-flags-rst-cpm)

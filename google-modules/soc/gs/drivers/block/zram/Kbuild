@@ -27,7 +27,8 @@ ddk-flags-zcomp_gs_cpu := -I$(srctree)/google-modules/soc/gs/drivers/block/zram 
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
-	-I$(srctree)/google-modules/trusty/include
+	-I$(srctree)/google-modules/trusty/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_zcomp_cpu.o += $(ddk-flags-zcomp_gs_cpu)
 CFLAGS_backend_842.o += $(ddk-flags-zcomp_gs_cpu)
 CFLAGS_backend_deflate.o += $(ddk-flags-zcomp_gs_cpu)
@@ -59,7 +60,8 @@ ddk-flags-zcomp_gs_eh := -I$(srctree)/google-modules/soc/gs/drivers/block/zram \
 	-I$(srctree)/google-modules/trusty/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/soc/google/eh/include \
 	-I$(srctree)/google-modules/perf/infra/mbfs/include \
-	-I$(srctree)/google-modules/soc/rdo/include
+	-I$(srctree)/google-modules/soc/rdo/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_zcomp_eh.o += $(ddk-flags-zcomp_gs_eh)
 
 # zram_gs (zram_gs.ko)
@@ -84,7 +86,8 @@ ddk-flags-zram_gs := -I$(srctree)/google-modules/soc/gs/drivers/block/zram \
 	-I$(srctree)/google-modules/perf/core/google_pm_qos/include \
 	-I$(srctree)/google-modules/perf/core/gs_perf_domain/include \
 	-I$(srctree)/google-modules/soc/gs/drivers/devfreq/google \
-	-I$(srctree)/google-modules/trusty/include
+	-I$(srctree)/google-modules/trusty/include \
+	$(GOOGLE_DDK_INTERNAL_INCLUDES)
 CFLAGS_zcomp.o += $(ddk-flags-zram_gs)
 CFLAGS_zram_drv.o += $(ddk-flags-zram_gs)
 CFLAGS_zram_ioctl.o += $(ddk-flags-zram_gs)
