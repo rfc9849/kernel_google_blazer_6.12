@@ -1470,6 +1470,15 @@ ifneq ($(wildcard $(srctree)/arch/$(SRCARCH)/boot/dts/),)
 dtstree ?= arch/$(SRCARCH)/boot/dts
 endif
 
+ifdef CONFIG_SOC_LGA
+dtstree := google-devices/muzel/dts
+DTC_INCLUDE := $(srctree)/google-modules/soc/gs/include \
+	       $(srctree)/google-modules/soc/rdo/include \
+	       $(srctree)/include \
+	       $(objtree)/include
+export DTC_INCLUDE
+endif
+
 ifneq ($(dtstree),)
 
 %.dtb: dtbs_prepare
