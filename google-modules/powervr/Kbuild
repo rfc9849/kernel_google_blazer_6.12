@@ -1,3 +1,10 @@
+# In-tree builds ignore the KCFLAGS from the Makefile
+subdir-ccflags-y += \
+	-I$(ROOT_DIR)/private/google-modules/soc/gs/include \
+	-I$(ROOT_DIR)/private/google-modules/soc/rdo/include \
+	-I$(ROOT_DIR)/private/google-modules/iif/include \
+	-I$(ROOT_DIR)/private/google-modules/perf/include
+
 obj-$(CONFIG_POWERVR_ADF_FBDEV) += powervr_adf_fbdev.o
 powervr_adf_fbdev-y += adf_common.o adf_fbdev.o
 
