@@ -37,7 +37,7 @@ static const char *sync_status_str(int status)
 }
 
 struct gcip_dma_fence_manager *
-gcip_dma_fence_manager_create(struct device *dev, const char *driver_name, const char *name)
+__gcip_dma_fence_manager_create(struct device *dev, const char *driver_name, const char *name)
 {
 	struct gcip_dma_fence_manager *mgr = kzalloc(sizeof(*mgr), GFP_KERNEL);
 

@@ -63,14 +63,14 @@ struct gcip_dma_fence {
  * Return: A pointer to the fence manager on success, or the pointer to a negative errno otherwise.
  */
 struct gcip_dma_fence_manager *
-gcip_dma_fence_manager_create(struct device *dev, const char *driver_name, const char *name);
+__gcip_dma_fence_manager_create(struct device *dev, const char *driver_name, const char *name);
 
 /*
  * Compilation time check trick to ensure `driver_name` is a string literal to prevent UAF (see the
  * comment above).
  */
 #define gcip_dma_fence_manager_create(dev, driver_name, name) \
-	gcip_dma_fence_manager_create(dev, "" driver_name "", name)
+	__gcip_dma_fence_manager_create(dev, "" driver_name "", name)
 
 /**
  * gcip_dma_fence_manager_destroy() - Destroys the fence manager.
