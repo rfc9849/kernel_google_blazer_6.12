@@ -15,6 +15,7 @@ export GOOGLE_DDK_INTERNAL_INCLUDES := \
 	-I$(srctree)/drivers/dma-buf \
 	-I$(srctree)/drivers/dma \
 	-I$(srctree)/drivers/extcon \
+	-I$(srctree)/drivers/pci \
 	-I$(srctree)/drivers/pci/controller/dwc \
 	-I$(srctree)/drivers/thermal \
 	-I$(srctree)/drivers/ufs \
@@ -26,6 +27,7 @@ export GOOGLE_DDK_INTERNAL_INCLUDES := \
 	-I$(srctree)/drivers/devfreq \
 	-I$(srctree)/drivers/pinctrl \
 	-I$(srctree)/arch/arm64/kvm/hyp/include \
+	-I$(srctree)/arch/arm64/kvm/hyp/include/module \
 	-I$(srctree)/sound/usb \
 	-I$(srctree)/drivers/ufs/core \
 	-I$(srctree)/drivers/ufs/host \
