@@ -31,7 +31,10 @@ retaining their module names and delayed initialization. When Android loads its
 stock `.ko`, the kernel initializes the corresponding integrated driver instead
 of loading the stock machine code. Pixel's SMMUv3 EL2 driver is built directly
 into the nVHE hypervisor. Rust Binder has the same delayed-initialization
-support as integrated C modules.
+support as integrated C modules. Both Binder implementations and `binder.impl`
+are retained. Rust uses the stock `binder` tracefs namespace; the C fallback's
+tracepoints are namespaced as `binder_c` to avoid collisions in a single image.
+Android vendor hooks are not disabled.
 
 This removes binary KMI coupling for integrated drivers, **not** the need to
 match the vendor userspace, firmware, device trees, module names and module
@@ -63,7 +66,9 @@ scripts/google/build.sh
 
 `OUT` and `JOBS` are optional. The result is `out/arch/arm64/boot/Image.lz4`.
 Only this repository's source is compiled. Neither Bazel nor a `repo` workspace
-is required.
+is required. The macOS checkout is for inspection only: a case-insensitive APFS
+volume cannot represent several Linux filename pairs faithfully (for example
+`xt_DSCP.c` / `xt_dscp.c`). Build and authoritative verification stay on Linux.
 
 ## Regeneration and checks
 
@@ -71,6 +76,8 @@ is required.
 python3 scripts/google/ddk2kbuild.py
 python3 scripts/google/test_ddk2kbuild.py
 REGENERATE_CONFIG=1 scripts/google/build.sh
+python3 scripts/google/check_image.py
+scripts/google/package.sh
 ```
 
 The generator evaluates the `muzel` and `lga` BUILD definitions with laguna's
@@ -83,6 +90,25 @@ its handwritten build. EL2 library objects are linked by the nVHE Makefile.
 `arch/arm64/configs/lga_defconfig` is generated from the new GKI, lga, muzel and
 DDK fragments, followed by the minimal integration overrides in
 `scripts/google/lga.fragment`.
+
+## Packaging
+
+`package.sh` creates an AnyKernel3 ZIP from the completed `Image.lz4`. It pins
+AnyKernel3 revision `020dfeccf9d7e962a48400fc94d3e451df92eead` and the arm64
+packing tools from Magisk v31.0 with a SHA-256 check. Those are installer tools;
+**no Magisk/root payload is added to the kernel or boot ramdisk**. The installer
+only targets blazer/mustang and refuses installation while running a 6.6 kernel.
+It does not replace vendor partitions.
+
+On the bring-up server, avoid downloads by reusing existing read-only caches:
+
+```sh
+AK3_SOURCE=/home/builder/kernel_google_blazer/out/AnyKernel3 \
+MAGISK_APK=/home/builder/kernel_google_blazer/out/Magisk-v31.0.apk \
+scripts/google/package.sh
+```
+
+Neither build nor packaging scripts flash a phone.
 
 ## Boot verification
 
