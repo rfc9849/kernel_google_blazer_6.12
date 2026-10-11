@@ -578,8 +578,15 @@
 		    IS_ENABLED(CONFIG_SOC_MBU)
 			/* Boost host cpufreq to max for peak tput. default is false */
 			#define DHD_HOST_CPUFREQ_BOOST
-			/* Boost host cpufreq to max for peak tput. default is true */
+			/*
+			 * Boost host cpufreq to max for peak tput. default is true.
+			 * Not on LGA: at ~100 Mbit/s it pins the mid cluster at
+			 * 2.09 GHz for ~40 mW more CPU power and no throughput gain.
+			 * It stays available via the dhd_cpufreq_boost parameter.
+			 */
+			#if !IS_ENABLED(CONFIG_SOC_LGA)
 			#define DHD_HOST_CPUFREQ_BOOST_DEFAULT_ENAB
+			#endif
 		#endif
 		/* Force all CPUs to run at MAX frequencies */
 		/* #define DHD_FORCE_MAX_CPU_FREQ */
